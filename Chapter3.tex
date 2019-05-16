@@ -1,32 +1,65 @@
-\chapter{Chapter} 
+\chapter{Project Classification} 
+\label{chap:3}
 
-\section{Section 1}
+  
 
-Write here...
+\input{solution.tex}
 
-\begin{table}[]
-  \begin{center}
-  	\caption{Comparison.}
-	\begin{tabular}[]{|l|c|c|c|}
-		\hline
-		\multirow {2}{*}{ } & \multicolumn{2}{c|}{\textbf{Something}} & \multirow {2}{*}{\textbf{Something}} \\
-		\cline{2-3}
-		& Something & Something & \\
-		\hline
-		\textbf{Something} & 5 & 5 & 5 \\
-		\hline
-		\textbf{Something} & 4 & 4 & 4 \\
-		\hline
-		\textbf{Something} & 3 & 3 & 3 \\
-		\hline
-		\textbf{Something} & 2 & 2 & 2 \\
-		\hline
-		\textbf{Something} & 1 & 1 & 1 \\
-		\hline
-	\end{tabular}
-	\label{tab:tab1}
-  \end{center}
-\end{table}
+\section{Project study}
+\label{sec:p}
+
+\subsection{Lightning Network}
+\noindent In general, we can not say lighting network realize the cross-chain function, though it provided a classic application towards atomic swaps and HTLC. The design idea of lighting network is very simple, it put a large number of high-frequency small-value transactions off-chain to expand the transaction processing capability of the blockchain.\\
+\noindent Lightning network\cite{poon2016bitcoin} is a fast and scalable Bitcoin transaction project, it has two main technical points:
+\begin{enumerate}[A.]
+    \item \texttt{Recoverable Sequence Maturity Contract} \\
+    RSMC is similar to a reserve mechanism in which both parties trade in an off-chain trading pool. A certain amount of assets is used as the mutual funds for the transactions between the two parties, and the share of the assets is recorded off-chain. This trading pool is a “micro-payment channel”. When a transaction occurs between two parties, the proportion of the common assets in the trading pool will change. The new proportional data needs to be signed and confirmed by both parties, and the old proportional share version is invalid. The entire process is done off the chain, so it does not occupy the resources of the main chain. The final proportion of assets will be confirmed and record to the main-chain after one of the transaction party requires a withdraw.\\
+    It could happen anytime as long as both parties signed for this. To ensure the security, if someone submitted the old share of assets to make profits, others could protect themselves by proving this balance sheet is not the latest one. Then the asset of the counterfeit party will be confiscated to the challenger.
+    \item \texttt{Hash Time-locked Contract}\\
+     Lightning Network uses HTLC to guarantee the atomicity of transaction as shown in Figure \ref{fig:hash}. This diagram simply illustrates how HTLC works to provide limited time transfer function. The basic process is: Bob and Alice can reach an agreement that specifies Alice to lock a certain amount of assets and provide a hashed value $H$. Before the arrival of time $T$, if Bob can learn an appropriate $s$ (secret) where its hash value matches with $H$ and sent to Alice, Bob can get the corresponding amount of assets value. Conversely, the asset will unlock and return to Alice.
+\end{enumerate}
+\noindent When there are “micro-payment channels” between multiple users, these channels are connected to each other to form a “channel network”, which is the lightning network. The mutual transfer of the two parties does not require a direct payment channel to connect to each other, but also through the intermediary to achieve mutual transfer. \\ \\
+\noindent \begin{large}
+\textbf{Disadvantages}:
+\end{large}
+\begin{itemize}
+    \item Users cannot pay off-line. 
+    \item More suitable for small transactions. Large transfer amount needs to open multiple channels.
+    \item Easy to face the dis-matched situation, if there's no response from one party, the other one may need hours to close the channel and substitute with another route.
+\end{itemize}
+
+
+\input{notary.tex}
+\input{relay.tex}
+\input{sidechain.tex}
+
+
+
+
+
+% \subsection{Interoperability Alliance \protect\footnotemark}
+% \footnotetext{Wanchain, ICON and AION form an alliance to overcome the technical difficulties towards cross-chain technology. reference: https://medium.com/helloiconworld/blockchain-interoperability-alliance-icon-x-aion-x-wanchain-8aeaafb3ebdd}
+
+
+
+
+
+\subsection{PalletOne}
+\noindent
+\begin{figure}[H]
+    \includegraphics[width=1\textwidth]{./figures/jury.png}
+    \centering
+    \caption{ \protect\footnotemark}
+    \centering
+\end{figure}
+\begin{figure}[H]
+    \includegraphics[width=1\textwidth]{./figures/mediator.png}
+    \centering
+    \caption{ \protect\footnotemark}
+    \centering
+\end{figure}
+\footnotetext{Image courtesy of PalletOne yellow paper\cite{palletone}}
+
 
 \section{Summary}
 

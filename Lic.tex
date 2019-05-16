@@ -9,20 +9,27 @@
 \usepackage{lmodern}
 \usepackage[latin1]{inputenc}
 \usepackage[swedish, english]{babel}
-%\usepackage{graphics}
-%\usepackage{amssymb}
-%\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{amssymb}
+\usepackage{amsmath}
 \usepackage{graphicx} 
-%\usepackage{caption}
+\usepackage{caption}
+\usepackage{rotating}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{pdfpages}
 %\usepackage{subcaption}
 %\usepackage{color} 
 %\usepackage{transparent} 
 %\usepackage{bm} % bold math
 %\usepackage{fmtcount}
 %\usepackage{booktabs}
+\usepackage{supertabular}
+\usepackage{tabularx}
 \usepackage{multirow}
-%\usepackage{url}
-%\usepackage{cite}
+\usepackage{multicol}
+\usepackage{url}
+\usepackage{cite}
 
 %\usepackage[singlelinecheck=off]{caption}
 
@@ -30,7 +37,7 @@
 \input{Lic-bibl}
 \begin{document}
 
-\addcontentsline{toc}{chapter}{Note: \\ It is not allowed to "copy and paste" from your papers to your dissertation.} % these are notes and they are not a part of the thesis
+%\addcontentsline{toc}{chapter}{Note: \\ It is not allowed to "copy and paste" from your papers to your dissertation.} % these are notes and they are not a part of the thesis
 
 \frontmatter
 \maketitle
@@ -43,7 +50,7 @@
 \clearpage
 
 \setcounter{tocdepth}{2} % used for content layout
-\renewcommand{\contentsname}{Contents (suggestion)} % changes the appearance of Contents
+\renewcommand{\contentsname}{Contents} % changes the appearance of Contents
 \tableofcontents
 \clearpage
 
@@ -66,11 +73,11 @@
 \bibliographystyle{IEEEtran} % this is just an example, other styles can be used as well
 \bibliography{Lic} % calls the separate document named Lic.bbl
 
-%\backmatter % should be used for the actual thesis, separate documents can be added without the numbering, similar to the \frontmatter
-%\appendix{\input{app_papers}}
+\backmatter % should be used for the actual thesis, separate documents can be added without the numbering, similar to the \frontmatter
+\appendix{\input{app_papers}}
 \appendix
-\addcontentsline{toc}{chapter}{Summary of the appended papers (only for the collection of papers thesis)} % for template purposes
-\addcontentsline{toc}{chapter}{Appended Papers (only for the collection of papers thesis), for which you need to request copyright for reprinting them in the dissertation} % for template purposes
+%\addcontentsline{toc}{chapter}{Summary of the appended papers (only for the collection of papers thesis)} % for template purposes
+%\addcontentsline{toc}{chapter}{Appended Papers (only for the collection of papers thesis), for which you need to request copyright for reprinting them in the dissertation} % for template purposes
 
 \end{document}
 \endinput
