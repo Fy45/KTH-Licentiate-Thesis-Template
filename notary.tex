@@ -20,7 +20,8 @@
         \label{fig:ILP}
         \end{figure}
 \subsubsection{Wanchain}
-\noindent Wanchain\cite{wanchain.org} is a cross-chain platform project initiated in 2016. It is a heterogeneous cross-chain framework that implements cross-chaining based primarily on distributed notary scheme. This model mainly uses cryptography "Secure Multi-Party Computation" and "Threshold Key Sharing Scheme" to implement the Authenticator's distributed signature.\\
+\noindent Wanchain\cite{wanchain.org} is a cross-chain platform project initiated in 2016. It is a heterogeneous cross-chain framework that implements cross-chaining based primarily on distributed notary scheme. This model mainly uses cryptography "Secure Multi-Party Computation" and "Threshold Key Sharing Scheme" to implement the Authenticator distributed signature.\\
+
 \noindent Wanchain provides the infrastructure for asset cross-chain transfer channels for different blockchain networks, realizing the transfer of assets between Wanchain and original chain. Wanchain3.0 now launches bridges from Bitcoin to the Ethereum network. The transaction reliability verification is completed by multiple Storeman of Wanchain. The following figures\ref{fig:wan1}\ref{fig:wan2} are shown the transfer process between Wanchain and Ethereum.
         \begin{figure}[H]
         \includegraphics[width=1\textwidth]{./figures/ethtowan.png}
@@ -49,7 +50,9 @@
     \item If the user does not release the secret number within the scope of the hash time lock, the hash time lock expires
     \item The transaction of the post-cross-contract is automatically invalidated, and the user regains control of the original token.
 \end{enumerate}
+
 \noindent In Wanchain, when Storeman locked an account, the private key of the locked account is scattered into multiple pieces and send to Storeman, and it requires more than a certain percentage of Storeman complete the signature before the final confirmation. In order to avoid conspiracy, Storeman has to pay a certain amount of token to participate in the verification in case of doing evil. To ensure atomicity, Wanchain uses a hash time lock to lock cross-chain transactions, ensuring that no user or Storeman will complete a one-sided transaction.\\
+
 \noindent Since the Wanchain mechanism does not change the original chain, it is necessary to adapt the development according to the characteristics of the original chain, which is also the difficulty of heterogeneous cross-chain solution. The transaction speed is affected by the confirmation speed of the original chain.\\\\
 \begin{large}
 \textbf{Fusion}
@@ -57,6 +60,7 @@
 
 
 \noindent Similar to the principle of Wanchain, Fusion's goal is to build a basic platform for the operation of encrypted financial applications based on blockchain technology. On this platform, a variety of tokens can be freely interacted through smart contracts to achieve value interoperability. Support multi-platform cross-chain asset transfer, using a distributed signature notary model for cross-chain transaction processing.\\
+
 \noindent Based on Hierarchical Hybrid Consensus Mechanism(HHCM), Fusion combines the advantages of PoW and PoS consensus mechanism, which balancing the safety, efficiency, and scalability. It is the only cross-chain platform that offers parallel computing, multiple triggering mechanisms, and off-chain data support.\\
 
         \begin{figure}[H]
@@ -69,3 +73,47 @@
         \end{figure}
 \footnotetext{Image courtesy of Fusion white paper\cite{fusion}}
 \noindent The realization of cross-chain assets transaction is based on the lock-in\&lock-out process as shown in Figure \ref{fig:lockin}.
+
+
+\subsubsection{PalletOne}
+\noindent To face with the lack of interoperability in the blockchain world, PalletOne aims to become the "IP protocol" of the blockchain network, which provides an operating environment for decentralized applications via abstract interfaces.\cite{palletone} \\
+
+\noindent On the one hand, PalletOne encapsulates all underlying blockchains into adapters in the form of interfaces so that it could exchange values and data with different blockchains. On the other hand, the PalletOne virtual machine provides a secure and stable smart contract running environment for common programming languages. Developers can write cross-chain blockchain applications using their common development language without paying attention to the details of the blockchain. At the same time, PalletOne's original jury mechanism and the Mediator mechanism of DAG Data Storage and DPoS enable both contract execution and data storage to be processed in parallel, enabling a high-performance "super-chain."\\
+
+\noindent According to their technical yellow paper, they try to address scalability issues, enhance user-friendliness, and transaction issues in different chains. However, the core problem that PalletOne solves is the problem of cross-chain interoperability. This is also the place where we focus on. The most creative feature in PalletOne is the consensus mechanism, it is more complicated and divide the nodes into two roles:
+\begin{itemize}
+    \item \textbf{Jury} \\
+    Instead of the traditional consensus model, PalletOne delegates the operation of smart contracts and the management of multi-signature accounts to the jury. The jury randomly selected by the candidate jurors will use the consensus to reduce the occurrence of network congestion, and at the same time use the deposit penalty mechanism to ensure that the jurors do not do evil.
+    \item \textbf{Mediator}\\
+    Mediator in PalletOne is responsible for the overall security of the whole PalletOne network, so Mediator needs to ensure that all decisions are correct. It is similar to the function of miners in traditional blockchains to create blocks. The nodes elect Mediator by using DPoS consensus. In order to prevent Mediator from becoming a performance bottleneck for PalletOne, most of the work only needs to be done by the jury without calling Mediator.
+\end{itemize}
+\noindent The following Figures\ref{fig:jury} and \ref{fig:mediator} provided by the official yellow paper are the vivid examples of the cross-chain process between BTC and ETH with different endorsement.
+
+\begin{figure}[H]
+    \includegraphics[width=1\textwidth]{./figures/jury.png}
+    \centering
+    \caption{The normal process of executing the exchange contract (with Jury endorsement) \protect\footnotemark}
+    \label{fig:jury}
+    \centering
+\end{figure}
+\footnotetext{Image courtesy of PalletOne yellow paper\cite{palletone}}
+\begin{enumerate}
+    \item Jury members and two user accounts first executed the proper contract that generated 7/12 multi-signature address for both crypto-currency.
+    \item Then both parties transferred a certain amount of exchange currency to corresponding multi-signature address.
+    \item Each party will initiate the signature request with their own 4 private keys to collect the tokens.
+    \item Jury verified the validity of both contracts and checked the status of two multi-signature address. If failed, go back to step 2.
+    \item After verifying the satisfaction, each juror will sign with the private key and invoke the transactions.
+    \item If one party of this transaction failed or timed-out, the jury will terminate the contract and there will be a compensation to the other by the one caused the fault.
+\end{enumerate}
+\begin{figure}[H]
+    \includegraphics[width=1\textwidth]{./figures/mediator.png}
+    \centering
+    \caption{The normal process of executing the exchange contract (with Mediator endorsement) \protect\footnotemark}
+    \label{fig:mediator}
+    \centering
+\end{figure}
+\footnotetext{Image courtesy of PalletOne yellow paper\cite{palletone}}
+\noindent The process of Mediator endorsement during the preparation stage differs from the previous one is, the signed contract will inquire the current votes of the Mediator and select the first 10 nodes to form the 7/12 multi-signature address. And since the limited number of juror in the Jury endorsement, Mediator mode guarantees the persistence of a multi-signature wallet, so there is additional step for the jury that has already reached the consensus to send the execution results to Mediators to verify, then the jury leader can broadcast the result once received the majority of Mediators' signature.
+
+\noindent Among the projects I have studied so far, PalletOne has the most ambitious and powerful team with a purely technical project that does not have much community operation.
+
