@@ -14,7 +14,6 @@ Last updated: 2016-06-16 by Janko Katic
 
 
 yfan_version(usage):
-
 - `git clone` this repository
 - open the `lic.tex` file and compile it
 - the figures are located in right folder
