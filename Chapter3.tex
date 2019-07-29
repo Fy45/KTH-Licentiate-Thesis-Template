@@ -13,12 +13,12 @@
 \noindent Lightning network\cite{poon2016bitcoin} is a fast and scalable Bitcoin transaction project, it has two main technical points:
 \begin{enumerate}[A.]
     \item \texttt{Recoverable Sequence Maturity Contract} \\
-    RSMC is similar to a reserve mechanism in which both parties trade in an off-chain trading pool. A certain amount of assets is used as the mutual funds for the transactions between the two parties, and the share of the assets is recorded off-chain. This trading pool is a “micro-payment channel”. When a transaction occurs between two parties, the proportion of the common assets in the trading pool will change. The new proportional data needs to be signed and confirmed by both parties, and the old proportional share version is invalid. The entire process is done off the chain, so it does not occupy the resources of the main chain. The final proportion of assets will be confirmed and record to the main-chain after one of the transaction party requires a withdraw.\\
+    RSMC is similar to a reserve mechanism in which both parties trade in an off-chain trading pool. A certain amount of assets is used as the mutual funds for the transactions between the two parties, and the share of the assets is recorded off-chain. This trading pool is a ``micro-payment channel''. When a transaction occurs between two parties, the proportion of the common assets in the trading pool will change. The new proportional data needs to be signed and confirmed by both parties, and the old proportional share version is invalid. The entire process is done off the chain, so it does not occupy the resources of the main chain. The final proportion of assets will be confirmed and record to the main-chain after one of the transaction party requires a withdraw.\\
     It could happen anytime as long as both parties signed for this. To ensure the security, if someone submitted the old share of assets to make profits, others could protect themselves by proving this balance sheet is not the latest one. Then the asset of the counterfeit party will be confiscated to the challenger.
     \item \texttt{Hash Time-locked Contract}\\
      Lightning Network uses HTLC to guarantee the atomicity of transaction as shown in Figure \ref{fig:hash}. This diagram simply illustrates how HTLC works to provide limited time transfer function. The basic process is: Bob and Alice can reach an agreement that specifies Alice to lock a certain amount of assets and provide a hashed value $H$. Before the arrival of time $T$, if Bob can learn an appropriate $s$ (secret) where its hash value matches with $H$ and sent to Alice, Bob can get the corresponding amount of assets value. Conversely, the asset will unlock and return to Alice.
 \end{enumerate}
-\noindent When there are “micro-payment channels” between multiple users, these channels are connected to each other to form a “channel network”, which is the lightning network. The mutual transfer of the two parties does not require a direct payment channel to connect to each other, but also through the intermediary to achieve mutual transfer. \\ \\
+\noindent When there are ``micro-payment channels'' between multiple users, these channels are connected to each other to form a ``channel network'', which is the lightning network. The mutual transfer of the two parties does not require a direct payment channel to connect to each other, but also through the intermediary to achieve mutual transfer. \\ \\
 \noindent \begin{large}
 \textbf{Disadvantages}:
 \end{large}
@@ -42,8 +42,53 @@
 
 
 
+\subsection{PalletOne}
+\noindent To face with the lack of interoperability in the blockchain world, PalletOne aims to become the ``IP protocol'' of the blockchain network, which provides an operating environment for decentralized applications via abstract interfaces.\cite{palletone} \\
+
+\noindent On the one hand, PalletOne encapsulates all underlying blockchains into adapters in the form of interfaces so that it could exchange values and data with different blockchains. On the other hand, the PalletOne virtual machine provides a secure and stable smart contract running environment for common programming languages. Developers can write cross-chain blockchain applications using their common development language without paying attention to the details of the blockchain. At the same time, PalletOne's original jury mechanism and the Mediator mechanism of DAG Data Storage and DPoS enable both contract execution and data storage to be processed in parallel, enabling a high-performance ``super-chain.''\\
+
+\noindent According to their technical yellow paper, they try to address scalability issues, enhance user-friendliness, and transaction issues in different chains. However, the core problem that PalletOne solves is the problem of cross-chain interoperability. This is also the place where we focus on. The most creative feature in PalletOne is the consensus mechanism, it is more complicated and divide the nodes into two roles:
+\begin{itemize}
+    \item \textbf{Jury} \\
+    Instead of the traditional consensus model, PalletOne delegates the operation of smart contracts and the management of multi-signature accounts to the jury. The jury randomly selected by the candidate jurors will use the consensus to reduce the occurrence of network congestion, and at the same time use the deposit penalty mechanism to ensure that the jurors do not do evil.
+    \item \textbf{Mediator}\\
+    Mediator in PalletOne is responsible for the overall security of the whole PalletOne network, so Mediator needs to ensure that all decisions are correct. It is similar to the function of miners in traditional blockchains to create blocks. The nodes elect Mediator by using DPoS consensus. In order to prevent Mediator from becoming a performance bottleneck for PalletOne, most of the work only needs to be done by the jury without calling Mediator.
+\end{itemize}
+\noindent The following Figures\ref{fig:jury} and \ref{fig:mediator} provided by the official yellow paper are the vivid examples of the cross-chain process between BTC and ETH with different endorsement.
+
+\begin{figure}[H]
+    \includegraphics[width=1\textwidth]{./figures/jury.png}
+    \centering
+    \caption{The normal process of executing the exchange contract (with Jury endorsement) \protect\footnotemark}
+    \label{fig:jury}
+    \centering
+\end{figure}
+\footnotetext{Image courtesy of PalletOne yellow paper\cite{palletone}}
+\begin{enumerate}
+    \item Jury members and two user accounts first executed the proper contract that generated 7/12 multi-signature address for both crypto-currency.
+    \item Then both parties transferred a certain amount of exchange currency to corresponding multi-signature address.
+    \item Each party will initiate the signature request with their own 4 private keys to collect the tokens.
+    \item Jury verified the validity of both contracts and checked the status of two multi-signature address. If failed, go back to step 2.
+    \item After verifying the satisfaction, each juror will sign with the private key and invoke the transactions.
+    \item If one party of this transaction failed or timed-out, the jury will terminate the contract and there will be a compensation to the other by the one caused the fault.
+\end{enumerate}
+\begin{figure}[H]
+    \includegraphics[width=1\textwidth]{./figures/mediator.png}
+    \centering
+    \caption{The normal process of executing the exchange contract (with Mediator endorsement) \protect\footnotemark}
+    \label{fig:mediator}
+    \centering
+\end{figure}
+\footnotetext{Image courtesy of PalletOne yellow paper\cite{palletone}}
+\noindent The process of Mediator endorsement during the preparation stage differs from the previous one is, the signed contract will inquire the current votes of the Mediator and select the first 10 nodes to form the 7/12 multi-signature address. And since the limited number of juror in the Jury endorsement, Mediator mode guarantees the persistence of a multi-signature wallet, so there is additional step for the jury that has already reached the consensus to send the execution results to Mediators to verify, then the jury leader can broadcast the result once received the majority of Mediators' signature.
+
+\noindent Among the projects I have studied so far, PalletOne has the most ambitious and powerful team with a purely technical project that does not have much community operation.
+
+
+
 
 
 
 \section{Summary}
-\noindent This Chapter have presented a thorough case study of 14 representative cross-chain projects and classified them into several working schemes. Through the official white paper and other documents, the preceding sections explained the working process and theory of them using diagrams to help the understanding. Including some of my personal comments and thoughts towards them. The total work of comparison will be shown as a table in the Appendix%\ref{app:A}.
+\noindent This Chapter have presented a thorough case study of 14 representative cross-chain projects and classified them into several working schemes. Through the official white paper and other documents, the preceding sections explained the working process and theory of them using diagrams to help the understanding. Including some of my personal comments and thoughts towards them. The total work of comparison will be shown as a table in the Appendix \ref{app:A}.
+
