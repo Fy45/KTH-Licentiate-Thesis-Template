@@ -1,13 +1,15 @@
 \section{Solutions}
+\label{sec:sol}
 
-\noindent Based on what we discussed about the difficulties in previous section, there's some solutions that came up with multiple cross-chain projects. They will be illustrated in following paragraphs.
+\noindent Based on what we discussed about the difficulties in previous section, there are some solutions that came up with multiple cross-chain projects. They will be illustrated in following paragraphs.
 \subsection{Ensure the atomic of transactions}
+
 \subsubsection{Atomic swaps}
 \noindent An atomic cross-chain swap\cite{herlihy2018atomic} is the basic theoretical framework for multiple parties exchange assets across multiple blockchains. Atomic operations in computer science ensures every exchange either success or failure, no third intermediate state.\\
 \noindent For a more intuitive introduction to the atomic swap protocol, we assume an exchange scenario:
    \begin{figure}[H]
     \includegraphics[width=0.79\textwidth]{./figures/atomic_swaps.png}
-    \centering
+	\centering
     \caption{Atomic swaps diagram}%\protect\footnotemark}
     \centering
     \label{fig:atomic}
@@ -36,6 +38,8 @@
         \label{fig:hash}
         \end{figure}
 \noindent Using only hash time locks is not enough when you want to achieve cross-chain asset transfer, you also need to cooperate with other cross-chain technologies to ensure the authenticity of cross-chain transactions.
+
+
 \subsubsection{Hash Time-locked Agreements(HTLA)}
 \noindent HTLA is one HTLC generalization protocol came up by Interledger\cite{HTLA}, regardless whether the system support HTLC or not, whether it's a distributed or centralized ledger. HTLA can be used to implement cross-chain exchange between system or even support multi-hop cross-chain interchange between multiple systems, as shown in the Figure \ref{fig:HTLA} below.
    \begin{figure}[H]
@@ -48,6 +52,7 @@
     
 \noindent Alice and Bob can across between blockchains A, B, and C via HTLA, and each blockchain supports different cross-chain protocols. The connector here plays a role in connection and isolation. Linking blockchains that support different cross-chain protocols together, and again isolate them, so that blockchains do not interfere with each other.\\
 \noindent HTLA supports multiple cross-chain protocols based on HTLC, some of them are mentioned in Figure \ref{fig:HTLA}.
+
 
 \subsection{Complete the transaction confirmation}
 \noindent As we all know, blockchain systems are relatively independent and closed, there's no direct communication way for them to confirm every piece of records that happened. So no matter how it evolves, there will always be a ``middle-man'' between the two chains, taking on the role of information exchange between the two chains.\\
@@ -138,4 +143,5 @@
 \end{enumerate}
 \subsubsection{Passive compatibility}
 \noindent Passive compatibility is mainly aimed at the blockchain system that has not been developed. It first builds the underlying cross-chain platform, allowing other blockchain systems to be easily, conveniently and securely accessed. Cross-chain platforms will prioritize the development of systems and protocol standards that apply to interoperability between the various chains. The subsequent development of standards-compliant development on existing platforms allows for the creation of blockchains that naturally have cross-chain functionality within the system. However, the cross-chain mentioned here refers to the chain that conforms to the protocol standard can be easily connected to each other. If it is to interoperate with other chains outside the system, it is necessary to develop a separate middleware to communicate.\\
+
 \noindent In addition, different cross-chain platforms can support different types of blockchains, such as Cosmos supporting isomorphic chains and Polkadot supporting heterogeneous chains, both of which are highly scalable, and will be later discussed in Section \ref{sec:p}.

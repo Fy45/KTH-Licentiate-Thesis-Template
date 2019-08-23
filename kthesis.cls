@@ -83,12 +83,12 @@
 \def\disputationsdatum{\gdef\thedisputationsdatum}
 \def\disputationslokal{\gdef\thedisputationslokal}
 \def\imprint{\gdef\theimprint}
-\def\isbn{\gdef\theisbn}
-\def\isrn{\gdef\theisrn}
-\def\issn{\gdef\theissn}
-\def\publisher{\gdef\thepublisher}
+%\def\isbn{\gdef\theisbn}
+%\def\isrn{\gdef\theisrn}
+%\def\issn{\gdef\theissn}
+%\def\publisher{\gdef\thepublisher}
 \def\address{\gdef\theaddress}
-\def\trita{\gdef\thetrita}
+%\def\trita{\gdef\thetrita}
 \def\kthlogo{\gdef\thekthlogo}
 \let\thesubtitle\relax
 \def\thethesistype{\ClassError{kthesis}%
@@ -97,24 +97,24 @@
 \def\theexamen{\ClassError{kthesis}%
   {\protect\examen\space not given}%
   {Please Read The Fine Manual.}}
-\def\thedisputationsdatum{\ClassError{kthesis}
-  {\protect\thedisputationsdatum\space not given}%
-  {Please Read The Fine Manual.}}
-\def\thedisputationslokal{\ClassError{kthesis}
-  {\protect\thedisputationslokal\space not given}%
-  {Please Read The Fine Manual.}}
+%\def\thedisputationsdatum{\ClassError{kthesis}
+%  {\protect\thedisputationsdatum\space not given}%
+%  {Please Read The Fine Manual.}}
+%\def\thedisputationslokal{\ClassError{kthesis}
+%  {\protect\thedisputationslokal\space not given}%
+%  {Please Read The Fine Manual.}}
 \def\theimprint{\ClassError{kthesis}%
   {\protect\theimprint\space not given}%
   {Please Read The Fine Manual.}}
-\def\thepublisher{\ClassError{kthesis}%
-  {\protect\thepublisher\space not given}%
-  {Please Read The Fine Manual.}}
-\def\theaddress{KTH\\SE-100 44 Stockholm\\SWEDEN}
+%\def\thepublisher{\ClassError{kthesis}%
+%  {\protect\thepublisher\space not given}%
+%  {Please Read The Fine Manual.}}
+%\def\theaddress{KTH\\SE-100 44 Stockholm\\SWEDEN}
 \def\thekthlogo{kth_svv}
 \makepagestyle{kthabstract}
 \makeevenhead{kthabstract}{}{}{}
 \makeoddhead{kthabstract}{}{}{}
-\makeevenfoot{kthabstract}{}{\normalfont\scriptsize
+\makeevenfoot{kthabstract}{}{\normal\include{kth-mag}font\scriptsize
   \def\@maybebullet{\if@bullet\space\textbullet\space\fi}
   \newif\if@bullet \@bulletfalse
   \@ifundefined{thetrita}{}{\@maybebullet\thetrita\@bullettrue}%
@@ -154,7 +154,7 @@
     \thethesistype\par
     \theimprint\par
   }\par
-  \newpage
+% \newpage
   \hbox{}\vfill
   \rmfamily
   \noindent\begin{tabular}[b]{@{}l@{}}
@@ -165,18 +165,19 @@
   \end{tabular}
   \hfill
   \noindent\begin{tabular}[b]{@{}r@{}}
-    \theaddress
+%    \theaddress
   \end{tabular}
   \par\bigskip
   \if@kthesis@blurb
     \if@kthesis@babel
-      \begin{otherlanguage}{swedish}
-        \noindent Akademisk avhandling som med tillst\aa nd
-        av Kungl Tekniska h\"{o}gskolan framl\"{a}gges till
-        offentlig granskning f\"{o}r avl\"aggande av
-        \theexamen\space \thedisputationsdatum\space i
-        \thedisputationslokal.\par
-      \end{otherlanguage}
+%      \begin{otherlanguage}{swedish}
+%        \noindent 
+%        Akademisk avhandling som med tillst\aa nd
+%        av Kungl Tekniska h\"{o}gskolan framl\"{a}gges till
+%        offentlig granskning f\"{o}r avl\"aggande av
+%        \theexamen\space i\thedisputationsdatum\space 
+%        \thedisputationslokal.\par
+%      \end{otherlanguage}
     \else
       \noindent Aka\-de\-misk av\-hand\-ling som med
       till\-st\aa nd av Kungl Tek\-niska h\"{o}g\-skolan
@@ -186,11 +187,11 @@
     \fi
     \bigskip
   \fi
-  \noindent
-  \copyright \space \theauthor, \thedate
+ \noindent
+%  \copyright \space \theauthor, \thedate
   \par\bigskip\noindent
-  Tryck: \thepublisher\par
-  \cleardoublepage
+%  Tryck: \thepublisher\par
+ \clearpage
   \endgroup
 }
 \endinput
