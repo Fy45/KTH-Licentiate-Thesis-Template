@@ -35,7 +35,7 @@ Apis.instance(rpc_endpoint_url, true).init_promise.then(
 
 async function deployHTLC(sender, recipient, Hash, amount, timelock, secret) {
 
-	let fromAccount = sender;
+	let fromAccount = sender; @\label{line:h1}@
 	let toAccount = recipient;
 
 	let time_lock = parseInt(timelock);
@@ -103,7 +103,7 @@ async function verifyHTLC(htlc_id) {
 
 		const res = JSON.parse(JSON.stringify(result))
 		const htlcId = res[0].id
-		const fromAccountId = res[0].transfer.from
+		const fromAccountId = res[0].transfer.from 
 		const toAccountId = res[0].transfer.to
 		const amount = res[0].transfer.amount
 		const hash = '0x' + res[0].conditions.hash_lock.preimage_hash[1]

@@ -1,19 +1,29 @@
-\section{Code Pieces}
+\begin{huge}
+\textbf{Code Pieces}
+\end{huge}
+
+
 \input{solidity-highlighting.tex}
 \input{highlight_js.tex}
 
 
-\section{a. Atomic swaps based on HTLC}
+\section{\uppercase\expandafter{\romannumeral1}. Atomic swaps based on HTLC}
 
-\begin{lstinputlisting}[language=JavaScript, captionpos=t, caption=Bitshares side, firstline = 10, lastline = 50]{./codes/bts.js}
+\begin{lstinputlisting}[language=JavaScript,  
+						caption=Bitshares side, 	
+						firstline = 10, 
+						lastline = 50,
+						escapechar=@]{./codes/bts.js}
 \end{lstinputlisting}
-\begin{lstinputlisting}[language=JavaScript, captionpos=t, caption=Ethereum Side, firstline = 14, lastline =50]{./codes/eth.js}
+see line~\ref{line:h1}
 
-
-	
+\begin{lstinputlisting}[language=JavaScript, 
+						caption=Ethereum Side, 
+						firstline=20,
+						lastline=50]{./codes/eth.js}	
 \end{lstinputlisting}
 
-\section{b. Ethereum smart contracts}
+\section{\uppercase\expandafter{\romannumeral2}. Ethereum smart contracts}
 
 \noindent This contract provides a way to create and keep
 HTLCs for ETH. Detail protocol:
@@ -22,17 +32,21 @@ HTLCs for ETH. Detail protocol:
 	\item \texttt{newContract(receiver, hashlock, timelock)}- sender calls this to create a new HTLC and gets back a 32 byte contract id
 	\item \texttt{withdraw(contractId, preimage)} - once the receiver knows the preimage of the hashlock hash they can claim the ETH with this function
 	\item \texttt{refund()} - after timelock has expired and if the receiver did not withdraw funds the sender / creator of the HTLC can get their ETH back with this function.
-       
-
 \end{enumerate}
   
 
-\begin{lstinputlisting}[language=Solidity, firstline = 12, lastline =40, captionpos=t, caption = Hashed Timelock Contracts (HTLCs) on Ethereum]{./codes/HashedTimelock.sol}
+\begin{lstinputlisting}[language=Solidity, 
+						firstline = 12, 
+						lastline =40, 
+						caption = Hashed Timelock Contracts (HTLCs) on Ethereum]{./codes/HashedTimelock.sol}
 
 \end{lstinputlisting}
 
 
-\begin{lstinputlisting}[language=Solidity, firstline=20, lastline=50, captionpos =t, caption= Ethereum micro-payment channel -- Machinomy]{./codes/contract.sol}
+\begin{lstinputlisting}[language=Solidity, 
+						firstline=20, 
+						lastline=50, 
+						caption= Ethereum micro-payment channel -- Machinomy]{./codes/contract.sol}
 	
 \end{lstinputlisting}
 
