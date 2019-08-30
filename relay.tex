@@ -55,20 +55,31 @@
 
 \subsubsection{Polkadot}
 \noindent Polkadot\cite{polkadot} is a cross-chain project supported by the Web3 Foundation. Creating a scalable, heterogeneous, multi-chain architecture designed to address blockchain interoperability, scalability, and security.\\
-\noindent The overall architecture of Polkadot is shown in the figure below, consisting of a Relay Chain, Parachains and Bridges. 
+\noindent The overall architecture of Polkadot is shown in the figure below, consisting of a Relay Chain, Parachains and Bridges. \\
 
-\begin{itemize}
-    \item \textbf{Relay chain} is the central system of the Polkadot network, which coordinates the consensus and transactions between the chains, records account information and transaction status; 
-    \item \textbf{Parachains} can be built by developers to collect and process transactions, and transfer to Relay chain;
-    \item \textbf{Bridges} connect other heterogeneous blockchains (such as Ethereum) with Polkadot network.
-\end{itemize} 
-\noindent There are four roles in Polkadot's network:
-\begin{enumerate}
-    \item Collators (collecting user transactions, validating and submitting to Validators)
-    \item Validators (validating and broadcasting transaction data committed by Collators, verifying blocks and paying deposits)
-    \item Nominators (investment deposits selected for trust Validators)
-    \item Fishermen (supervising the evil behavior in the network). 
-\end{enumerate}
+\begin{table}[H]
+\begin{tabular}{l|c}
+
+Role& Description \\
+\hline
+\multirow{3}{1in}{\textbf{Relay chain}}& The central system of the Polkadot network, which \\& coordinates the consensus and transactions between the chains, \\& records account information and transaction status; \\
+\hline
+\multirow{2}{1in}{\textbf{Parachains}}& Built by developers to collect and process transactions,\\&and transfer to Relay chain; \\
+\hline
+\multirow{2}{1in}{\textbf{Bridges}} & Connects other heterogeneous blockchains (such as Ethereum) \\& with Polkadot network.\\
+\hline
+\textbf{Collators} & Collects user transactions and submitting to Validators\\
+\hline
+\multirow{2}{1in}{\textbf{Validators}} &Validates and broadcasts transaction data committed\\ & by Collators, verifys blocks and paying deposits\\
+\hline
+\textbf{Nominators} &Investment deposits selected for trust Validators \\
+\hline
+\textbf{Fishermen} &Supervises the evil behavior in the network\\
+\hline
+\end{tabular}
+\caption{Main roles in Polkadot}
+\end{table}
+
 \noindent Collators and Validators are the performers of the main transaction when doing cross-chain operations, while Nominators and Fishermen are the participants in maintaining system trust.\\
 
 

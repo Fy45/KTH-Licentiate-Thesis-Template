@@ -2,6 +2,80 @@
 \textbf{Crosswise Comparison Table}
 \end{huge}
 \\
+\clearpage
+\begin{center}
+\topcaption{Twenty CrossChain Project Cross-comparison Summary}
+\label{tab:totalcompare}
+
+\tablefirsthead{\hline
+                \multirow{4}{1.35cm}{Project}&
+				\multirow{4}{1.75cm}{Description}&
+				\multirow{4}{1cm}{Scheme}&
+				\multirow{4}{1.5cm}{Consensus}&
+				\multirow{4}{0.75cm}{Type}&
+				\multirow{4}{1.25cm}{Interop-erability}&
+				\multirow{4}{1.75cm}{Application}&
+				Compatibility with  traditional  ledger
+\\\hline}
+\tablelasttail{\hline}
+%
+\tablehead{\hline\multicolumn{8}{|c|}
+{\small\sl continued from previous page}\\\hline               
+		 		\multirow{4}{1.35cm}{Project}&
+				\multirow{4}{1.75cm}{Description}&
+				\multirow{4}{1cm}{Scheme}&
+				\multirow{4}{1.5cm}{Consensus}&
+				\multirow{4}{0.75cm}{Type}&
+				\multirow{4}{1.25cm}{Interop-erability}&
+				\multirow{4}{1.75cm}{Application}&
+				Compatibility with traditional  ledger
+\\\hline}
+
+\tabletail{\hline\multicolumn{8}{|c|}{\small\sl continued on next page}\\\hline}
+
+\begin{supertabular}{|p{1.37cm}|p{3cm}<{\centering}|p{1cm}<{\centering}|p{1.5cm}<{\centering}|p{0.75cm}<{\centering}|p{1.25cm}<{\centering}|p{1.77cm}<{\centering}|p{2cm}<{\centering}|}
+Ripple& Ripple aims to build a global payment network based on blockchain, which proposes the Interledger protocol for establishing links with traditional financial institutions.&Notary&ILP&Plat-form&1-c-1&Most situation&Yes\\
+\hline
+BTC-Relay&	In 2016, the Consensys team introduced BTC-Relay, the most classic relay cross-chain solution that enables cross-chain transactions between Ethereum and Bitcoin, as well as realizes Ethereum DApps to support BTC payments.&	Relay	&PoS&Block-chain&	1-c-1&Asset exchange&No \\
+\hline
+Cosmos&	Cosmos is a cross-chain platform project initiated by the Terdermint team in 2017. It supports the modular establishment of Cosmos isomorphism chains and also supports the external heterogeneous chain through Bridge.&	Relay&	Tender-mint& Block-chain&	N-c-N&Decentralized exchange&	No \\
+\hline
+Polkadot&	Polkadot is a cross-chain platform project initiated by Parity Technologies that links the blockchain networks through relaychains and parachains, and links other chains outside the Polkadot network via BridgeChain.& 	Relay&	PoA&Block-chain&	N-c-N&	Scalability of decentralized computation &	No \\
+\hline
+Lighting network&	Lightning Network is a project running on Bitcoin. There are two main technical points, one is the RSMC (Recoverable Sequence Maturity Contract) and the other is the Hash Time Lock Contract. The former solves the problem of confirmation of the chain transaction, and the latter solves the problem of the payment channel.&	Hash Timelock&	PoW&	Layer 2 &	1-1	&Real-time payment&	No \\
+\hline
+Aion&	 Aion aims to build a multi-tiered cross-chain platform that supports cross-chain interoperability of heterogeneous chains and connects the blockchain systems by connecting networks and bridges.&	Relay&	DPoS+  PoI&	Plat-form	&N-c-N&	Information exchange&	No \\
+\hline
+ICON&	ICON is committed to building a cross-chain network that connects all types of blockchain systems, enabling DAPPs to be interconnected across all types of blockchains. ICON handles cross-chain transactions primarily through a notary mechanism.&	Notary&	LFT& 	Block-chain&	N-c-N&	Most situation&	Yes\\
+\hline
+Wanchain&	It is a cross-chain platform project that provides a cross-chain platform for interoperability of existing heterogeneous chains. It adopts a distributed signature notary mechanism to protect the accuracy of cross-chain transactions.&	Notary&	WANPos&	Plat-form&	N-c-N&	Asset exchange&	With chainlink\\
+\hline
+Fusion&	Fusion supports multi-platform cross-chain asset transfer, using a distributed signature notary model for cross-chain transaction processing.&	Notary& 	HHCM&	Plat-form&	N-c-N	&Transactional& 	No \\
+\hline
+Chainlink&	The ChainLink project was launched in 2014 to address an important issue of blockchain interaction with external data by creating a secure link to link real-world data to blockchain systems.&	Notary&	N/A&	Prot-col&	N-N	&Most situation&	Yes\\
+\hline
+ArcBlock&	ArcBlock is a platform dedicated to the development and deployment of decentralized blockchain applications using the Open Chain Access Protocol to realize the cross-chain ability of most applications.&	Relay&	PoS&	Plat-form	&N-c-N&	DApps&	No \\
+\hline
+Pallet-One&	It is a high-performance distributed cross-chain protoco, and has become the IP protocol of the blockchain world. By unifying the interface of each blockchain, it provides a multi-language smart contract running environment, uses randomly elected jurors to manage multi-signed public keys.& 	Notary&	DPoS+ Jury& 	Prot-col&	N-N	&Most situation	&No \\
+\hline
+Quant Over-ledger&	Quant Network creates the Overledger system that operates on top of blockchains, providing the interface for enabling the interoperability between blockchain and traditional network. It provides unlimited possibilities for blockchain data and applications.&	Relay&	Protocol based&	Plat-form&	N-N&	DApps&	Yes\\
+\hline
+Plasma&	Plasma is a side chain design model of Ethereum. Its main idea is to provide a model that can perform cross-chain transactions, and rely on the Ethereum blockchain to ensure its safety. The MapReduce mode is used to perform parallel computing, which greatly improves the performance of the sidechain.&	Side-chain&	PoS&	Layer 2& 	1-1&	Smart contract framework&	No \\
+\hline
+Elastos&	It is a public chain designed with a sidechain scheme. The main chain relies on the Bitcoin POW mechanism to ensure credibility without increasing energy consumption. Sidechain increases the computing power in the form of cluster services to avoid overloading the main chain.&	Side-chain&	AUXPoW +DPoS&	Plat-form	&1-N&	DApps&	No \\
+\hline
+Liquid&	Liquid is a sidechain of the BTC and is a typical representative of the multi-signature notary mechanism. It is specifically designed to meet the BTC fast transfer needs of exchanges, market makers, and brokers.& 	Notary&	PoW&	Layer 2 &	1-1&	Bitcoin-related&	No \\
+\hline
+One-Ledger&	OneLedger is a cross-chain consensus protocol that enables individuals or businesses using OneLedger to easily implement cross-chain interactions by creating sidechains. All transactions are performed on the sidechain, which greatly improves the efficiency.&	Side-chain	&3-layer consensus&	Prot-col&	1-1	&Decentralized exchange&	No \\
+\hline
+Bytom&	A multi-asset swap platform that operates on other chain assets. Developers can create a smaller version of relayer of other chain, and API calls can be made from smart contracts to the relayer of other chain to validate network activity for cross-chain communication.&	Relay&	PoW&	Plat-form&	1-c-N&	Asset exchange&	No \\
+\hline
+Aelf&	Aelf adopts the architecture of sidechain, which mainly solves the problem of resource isolation. Different applications have different requirements on resources and performance. Therefore, their operation in separate spaces is the optimal asset allocation of system resources. &	Side-chain&	DPoS&	Layer 2 &	1-1	&Sidechain expansion&	No \\
+\hline
+Zipper&	Zipper is a decentralized transit network that implements peer-to-peer messaging and transaction settlement across multiple blockchain networks. The Zipper Cross-chain Gateway (CCG) will be responsible for connecting all external blockchains.&	Notary&	BFT&	Plat-form&	N-c-N	&Transactional&	Yes\\
+\hline
+\end{supertabular}
+\end{center}
 
 \noindent The comparison table below summarizes 20 state-of-art cross-chain solutions, varying from protocols to platforms. The level of blockchain interoperability\footnotemark[1] is defined by Overledger develop team, using the following notation:
 \begin{itemize}
@@ -13,7 +87,6 @@
 
 \footnotetext[1]{This concept is adopted from Quant Overledger White paper\cite{verdian2018quant}}
 
-\includepdf[pages={1,2,3}]{table.pdf} 
 
 
 
