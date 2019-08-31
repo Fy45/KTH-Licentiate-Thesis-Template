@@ -3,16 +3,23 @@
 \end{huge}
 \\
 
+\noindent The comparison table below summarizes 20 state-of-art cross-chain solutions, varying from protocols to platforms. The level of blockchain interoperability\footnotemark[1] is defined by Overledger develop team, using the following notation:
+\begin{itemize}
+    \item 1-c-1: Two connected blockchains per time with a connector;
+    \item N-c-N: Many connected blockchains per time with connectors;
+    \item 1-1: Two connected blockchain connected per time without a connector;
+    \item N-N: Many connected blockchains per time without connectors.
+\end{itemize}
+
+\footnotetext[1]{This concept is adopted from Quant Overledger White paper\cite{verdian2018quant}}
 
 \begin{landscape}
-
-
-
-\bottomcaption[total_summary]{Summary of 20 Cross-chain Project}
+\footnotesize
+\topcaption[total_summary]{Summary of 20 Cross-chain Project}
 \label{tab:totalcompare}
 
 \tablefirsthead{\hline
-                \multirow{4}{1.7cm}{Project\\}&
+				\multirow{4}{1.7cm}{Project\\}&
 				\multirow{4}{4cm}{Description\\}&
 				\multirow{4}{1.2cm}{Scheme\\}&
 				\multirow{4}{1.5cm}{Consensus\\}&
@@ -36,13 +43,14 @@
 \\\hline}				
 \tabletail{\hline\multicolumn{8}{c}{\small\textsl Continued on Next Page}\\\hline}
 
-\begin{supertabular}{|m{1.7cm}<{\centering}|m{4cm}|m{1.2cm}<{\centering}|m{1.5cm}<{\centering}|m{1.2cm}<{\centering}|m{2.2cm}<{\centering}|m{2cm}<{\centering}|m{2cm}<{\centering}|}
+\begin{supertabular}
+					{|m{1.5cm}<{\centering}|m{4cm}<{\centering}|m{1.3cm}<{\centering}|m{1.5cm}<{\centering}|m{1.5cm}<{\centering}|m{2.2cm}<{\centering}|m{1.8cm}<{\centering}|m{1.8cm}<{\centering}|}
 
 Ripple& Ripple aims to build a global payment network based on blockchain, which proposes the Interledger protocol for establishing links with traditional financial institutions.&Notary&ILP&Platform&1-c-1&Most situation&Yes\\
 \hline
 BTC-Relay&	In 2016, the Consensys team introduced BTC-Relay, the most classic relay cross-chain solution that enables cross-chain transactions between Ethereum and Bitcoin, as well as realizes Ethereum DApps to support BTC payments.&	Relay	&PoS&Blockchain&	1-c-1&Asset exchange&No \\
 \hline
-Cosmos&	Cosmos is a cross-chain platform project initiated by the Terdermint team in 2017. It supports the modular establishment of Cosmos isomorphism chains and also supports the external heterogeneous chain through Bridge.&	Relay&	Tendermint& Blockchain&	N-c-N&Decentralized exchange&	No \\
+Cosmos&	Cosmos is a cross-chain platform project initiated by the Terdermint team in 2017. It supports the modular establishment of Cosmos isomorphism chains and also supports the external heterogeneous chain through Bridge.&	Relay&Tendermint& Blockchain&	N-c-N&Decentralized exchange&	No \\
 \hline
 Polkadot&	Polkadot is a cross-chain platform project initiated by Parity Technologies that links the blockchain networks through relaychains and parachains, and links other chains outside the Polkadot network via BridgeChain.& 	Relay&	PoA&Blockchain&	N-c-N&	Scalability of decentralized computation &	No \\
 \hline
@@ -83,16 +91,7 @@ Zipper&	Zipper is a decentralized transit network that implements peer-to-peer m
 
 \end{landscape}
 
-
-\noindent The comparison table below summarizes 20 state-of-art cross-chain solutions, varying from protocols to platforms. The level of blockchain interoperability\footnotemark[1] is defined by Overledger develop team, using the following notation:
-\begin{itemize}
-    \item 1-c-1: Two connected blockchains per time with a connector;
-    \item N-c-N: Many connected blockchains per time with connectors;
-    \item 1-1: Two connected blockchain connected per time without a connector;
-    \item N-N: Many connected blockchains per time without connectors.
-\end{itemize}
-
-\footnotetext[1]{This concept is adopted from Quant Overledger White paper\cite{verdian2018quant}}
+\normalsize
 
 
 
