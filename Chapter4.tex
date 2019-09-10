@@ -62,7 +62,7 @@ Token                                                                  & ETH    
 \noindent By utilizing smart contracts in this implementation, we could simulate cross-chain transactions with Ethereum accounts. Specifically, building the HTLC contract to realize atomic swaps. In the Interledger application, the contract works as the payment channel. Some example codes explanation could be seen in Appendix B ~\nameref{sec:contract}.
 
 \section{HTLC Atomic-swaps implementation}
-\label{sec:atomic}
+\label{sec:imp}
 \noindent As we discussed in section~\ref{sec:sol}, the most fundamental answer of cross-chain realization is the guarantee of atomicity in transactions. This implementation intended to solve the atomic problem by creating a cross-chain transaction between two parties based on HTLC. The sequence diagram of the cross-chain transaction process is shown in Figure~\ref{fig:success}.\\
 
 \noindent This implementation is performed under the Bitshares private test-net and Ethereum Ropsten test-net environment. BTS holder can only initiate the cross-chain trade in this scenario. This incompleteness is traced back to the HTLC mechanism Bitshares provided, the preimage and hash value are both required when creating the contract. Thus we had to generate unidirectionally.\\
@@ -172,4 +172,5 @@ Token                                                                  & ETH    
 \end{figure}
 
 \section{Summary}
+\label{sec:sum4}
 \noindent This chapter mainly introduces two implementations of different methods to accomplish the cross-chain transaction. First, we give a brief introduction of the applied ledger features and test environment settings. Then, we implement a simple HTLC atomic swaps framework from Bitshares to Ethereum, present one trade case result. Finally, we studied and tested one developed application integrated with interledger, dig into the working mechanism, and shows the result.
