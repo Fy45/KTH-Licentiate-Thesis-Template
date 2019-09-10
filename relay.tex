@@ -1,7 +1,7 @@
 \subsection{Relay Scheme}
 \subsubsection{BTC-Relay}
 \noindent In 2016, the BTC-Relay released by the Consensys team is the most classic relay cross-chain solution, enabling cross-chain transactions between Ethereum and Bitcoin, as well as realizing Ethereum's DApp applications to support BTC payments. Since Bitcoin scripts are non-Turing complete and difficult to support complex applications, BTC-Relay only implements one-way cross-chain from Bitcoin to Ethereum.
-        \begin{figure}[htb!]
+        \begin{figure}[H]
         \includegraphics[width=1\textwidth]{./figures/btc.png}
         \centering
         \caption{BTC-Relay cross-chain process diagram}%\protect\footnotemark}
@@ -13,13 +13,15 @@
 \subsubsection{Cosmos}
 \noindent Cosmos\cite{cosmos} is a cross-chain platform project initiated by the Tendermint team in 2017. It supports the modular establishment of Cosmos isomorphism chain and also supports the external heterogeneous chain through Bridge. Its most important feature is that all the chains in the Cosmos system are isomorphic and can more easily support the flow of assets across the chain. All the zones share a set of network protocols, consensus mechanisms, and data storage methods. Assemble the new Zone blockchain through the API interface.\\
 \noindent The overall architecture of Cosmos network are shown in Figure\ref{fig:cosmos}:
+
         \begin{figure}[H]
-        \includegraphics[width=0.7\textwidth]{./figures/cosmos.png}
+        \includegraphics[width=0.8\textwidth, height=2in]{./figures/cosmos.png}
         \centering
-        \caption{Cosmos network architecture}%\protect\footnotemark}
+        \caption{Cosmos network architecture\protect\footnotemark[1]}
         \centering
         \label{fig:cosmos}
         \end{figure}
+  \footnotetext[1]{Figure taken from: \url{https://golden.com/wiki/Cosmos_network}}
         
 \noindent There are many Zones connected to the Hub (Hub is a chain, and each Zone is also a chain). Cosmos Hub maintains a multi-asset distributed ledger and masters the asset status of all the Zones that connected to it. Each Zone will synchronize the state of the Hub, but the communication among Zones can only be done indirectly through the Hub. Each cross-chain asset transfer requires a standard successful confirmation from Zones and Hub. \\
 \noindent The information is transmitted between zones through packets based on the IBC (Inter-Blockchain Communication) protocol. The blocks in a space pack the data to be delivered into standard IBC data packets and finally complete the transmission through the network layer UDP or TCP protocol.
