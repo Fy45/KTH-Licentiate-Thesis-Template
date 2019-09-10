@@ -1,5 +1,27 @@
 \chapter{Conclusion and Future Work}
 \label{chap:5}
+\noindent This chapter concludes important findings based on the entire project and proposed several promising future works.
 \section{Conclusion}
-Write your conclusion here...
+\label{sec:conclusion}
+\noindent This degree project identified the cross-chain problems and investigated 20 cross-chain solutions. Based on the scheme they are using, characterized, and sort them out into 3 categories, finished by a comprehensive comparison table shown in~\nameref{app:A}. \\
+
+\noindent Then to test the performance and get one universal standard solution aiming to cross-chain question, one implementation of HTLC atomic swap between two parties is realized, and a study of an ILP integration application working mechanism is carried out. During the implementation, I have explained how the process is kept as atomic and reliable as possible. However, compared to Interledger application, this will introduce American call options failure if bad actors performed the contract. Interledger application, on the other hand, introduces one specific transport protocol based on ILP. This protocol can stream money in small chunks, thus achieve the fast cross-chain payment. Similarly, streaming payment has the limitation of each payment amount, which will lead to the problem with a larger payment that requires multiple transactions happened continuously, not in once. In a way, it creates some inconveniences and decreases efficiency.  \\
+
+\noindent  In conclusion, both cross-chain atomic swaps and cross-chain streaming can be regarded as the way to reach equilibrium for exchange. In cross-chain swaps, the money and data were securely locked without including any trusted party, but the counterparty risks could not be eliminated. In streaming payments, users will set a maximum loss equal to the amount of time and fees they are willing to pay, and the settlement can stop at anytime the exchange rate is worse than expected. While minimizing the potential loss, it also increases the time to transact. \\
+
+\noindent Based on what I have concluded, Interledger with stream payment could be the universal answer to realize the cross-ledger intercommunication so far, for the following reasons:
+\begin{itemize}
+    \item Few ledgers support HTLC, specifically most traditional ledgers. By having connectors instead of ledger-enforced hashlock, the simple value transfer between connectors is the only requirement to support ILP. Thus, Interledger protocol has broader application scenarios than atomic swap does.
+    \item Interledger is one strong functional protocol that analogous to the IP protocol over the Internet. It provides a solid under-layer protocol background for upper-layer developments such as the transport layer and application layer, which can be utilized in future services.  
+\end{itemize}
+
 \section{Future Work}
+\noindent The following aspects are being actively adopted as a part of future work:
+\begin{itemize}
+	\item Since many different cross-chain solutions and projects have sprung up over the years. There is an increasing number of projects that aiming at handling the issues with these two chosen solutions are facing today. When some of the projects are developed enough to perform a test case, involving them into test and analysis are considered as the future work.
+	\item The conclusion driven from~\nameref{chap:4} is based on two different test application that does not apply in the same use scenario, although the result is valid because we evaluate the working mechanism. We could be benefit from getting more information through one common test environment in the future.
+	\item At this stage, we can only provide theoretical analysis between cross-chain intercommunication between two parties. So pursuing a practical performance analysis towards larger cross-chain system with multiple users could leads to a more comprehensive conclusion.
+	\item Technologies so far are mainly focused on solving cross-chain communication problems, but there is still a lack of research on the cross-chain property of ease of use, scalability and security, which are prerequisites for large-scale application of cross-chain.
+
+	
+\end{itemize}  

@@ -1,46 +1,55 @@
 \chapter{Introduction}
 \label{chap:1}
-
+\noindent Chapter~\ref{chap:1} gives a general introduction to the thesis contributions which including Section~\ref{sec:m} describes Distributed Ledger Technology and points out the main issue this area is facing now. Section~\ref{sec:r} listed out the main problem this thesis trying to address. After discussing the research methods, objectives and delimitations in Section~\ref{sec:rm},~\ref{sec:ro}, and \ref{sec:d}. The outline structure of thesis is presented in Section~\ref{sec:to}. 
 \section{Motivation}
+\label{sec:m}
 
-\noindent Initially, the ledger is the foundation of accounting. However, it is not difficult to find that there are many shortcomings in the long-term use of traditional ledgers, for example, low efficiency, high cost, opacity and easy to cause fraud and abuse issues.
+\noindent Initially, the ledger means the foundation of accounting. However, it is not difficult to find that there are many shortcomings in the long-term use of traditional ledgers, for example, low efficiency, high cost, opacity and easy to cause fraud and abuse issues.\\
 
-\noindent With the development of information technology, these ledgers have gradually evolved into digital technology. The distributed ledger is a significant leap after the digitization of ledger-based technology. A distributed ledger is a database that is shared, replicated, and synchronized between network members\cite{brakeville2016blockchain}. It records transactions between network participants, such as the exchange of assets or data. From a technical point of view, the Distributed Ledger Technology (DLT) not only inherits the traditional bookkeeping philosophy but also has its unique innovations, which have some advantages that traditional ledgers cannot reach.
-
-\noindent Based on the background above, there exist many distributed ledgers, and for them to be fully distributed they need to communicate with each other and also traditional ledgers. Otherwise, the consistency between the ledgers of different entities across the chain would not be guaranteed. There have been many different approaches, such as cross-chain protocols and platforms released to realize the cross-chain transactions, so it is worthy of finding out the differences between them.
-
-\section{Research Questions}
-
-\noindent There is one technical issue that affects the blockchain developers, that is the inter-communications. A single blockchain network is a relatively closed system that does not actively interact with the outside world. The assets of each chain are also an independent value system. If we can break through the interoperability among different ledgers and let the value circulate on the broader world, it will inevitably promote the rapid development of the blockchain industry. Cross-chain technology is dedicated to building a bridge of trust between ledgers, breaking the situation of an isolated value system, and realizing asset interoperability to achieve a real win-win situation.\\
-
-\noindent This project makes uses of qualitative research strategy, where the research approach always implemented as interpretivism. Therefore qualitative approach was found to be most applicable for this study.\\
-
-\noindent For this research, I decided to use the literature review first to gain a deep understanding of cross-ledger history and realization of communications through published papers. Then the critical point is the case study among popular projects. By studying the different cross-chain implementations, exacting the main idea of them, we can summarize and categorize them into different groups. Hence, identify patterns and commonalities in the cross-chain field. Even help more and more developers to consummate the blockchain design.
-
-\section{Research Methodology}
-
-\section{Research Objectives}
-
-\noindent My research has contributed to the universal demanding and requirements on cross-ledger communication towards blockchain areas. In particular, I have focused on the problems that the realization of cross-chain communication is facing.\\
+\noindent With the development of information technology, these ledgers have gradually evolved into digital technology. The distributed ledger is a significant leap after the digitization of ledger-based technology. A distributed ledger is a database that is shared, replicated, and synchronized between network members\cite{brakeville2016blockchain}. It records transactions between network participants, such as the exchange of assets or data. From a technical point of view, the Distributed Ledger Technology (DLT) not only inherits the traditional bookkeeping philosophy but also has its unique innovations, which have some advantages that traditional ledgers cannot reach.\\
 
 \noindent For a long time since Bitcoin open the blockchain era, the blockchain world is like the single-machine time back in the 1960s. Every blockchain is highly independent and challenging to communicate with each other. Hence, the data and services in the blockchain world are confined to the individual blockchain. As a result, this phenomenon will discourage development. As if we could find a standardized cross-chain protocol/platform that could link all blockchain systems, and the services could be more specific and complete due to the co-operate of blockchains. The popularization and mature of cross-chain technology will lead a revolutionary development in the blockchain field. Moreover, different from the Internet to achieve the circulation of information, cross-ledger could realize the distribution of value.\\
 
-\noindent To understand different patterns or implementations of cross-chain technology, we need to start with the history of cross-chain and grasp the main idea of chain interoperability based on literature review. Based on those findings, we could summarize the fundamental problems the blockchains now facing, according to those difficulties, I will give several examples through the case study in the following paragraph.  The comparison from various aspects will next lead to a standard and universal needs of the cross-chain area. In my thesis, I have considered the following three major elements of this study as shown in Figure \ref{fig:contri}
+\noindent Based on the background above, there exist many distributed ledgers, and for them to be fully distributed, they need to communicate with each other and also traditional ledgers. Otherwise, the consistency between the ledgers of different entities across the chain would not be guaranteed. There have been many different approaches, such as cross-chain protocols and platforms released to realize the cross-chain transactions, so it is worthy of finding out the differences between them.
+
+\section{Research Questions}
+\label{sec:r}
+\noindent There is one technical issue that affects the blockchain developers, that is the inter-communications. A single blockchain network is a relatively closed system that does not actively interact with the outside world. The assets of each chain are also an independent value system. If we can break through the interoperability among different ledgers and let the value circulate on the broader world, it will inevitably promote the rapid development of the blockchain industry. Cross-chain technology is dedicated to building a bridge of trust between ledgers, breaking the situation of an isolated value system, and realizing asset interoperability to achieve a real win-win situation.\\
+
+\noindent For the existing blockchain system, it is very time-consuming and laborious to connect them individually. As the development of computer network, we need a set of across chain standards for blockchain interoperability, but this is not an easy thing to do. It should be an industry-driven standard for the widely applied. When the majority of projects follow a common, easy-to-use protocol, this standard is genuinely established. Having a universal standard of cross-chain communication pattern would represent an important milestone for the industry. The rapid flow of information will inevitably drive the improvement of efficiency and become the internal driving force for the development of the blockchain industry.
 
 
-    
+\section{Research Methodology}
+\label{sec:rm}
+\noindent This project mainly makes uses of a combination of qualitative and quantitative research strategy.\\
+
+\noindent For the beginning of this research, a literature study and review was taken first to gain a deep understanding of cross-ledger history and realization of communications through published papers. Then the critical point is the case study among popular projects. By studying the different cross-chain implementations, exacting the main idea of them, we can summarize and categorize them into different groups. Hence, identify patterns and commonalities in the cross-chain field. Even help more and more developers to consummate the blockchain design.\\
+
+\noindent To gain a proper perspective of the practical usage and performance of purposed solutions, it is necessary to actually implement at least one of them. Two different test cases were introduced and analyzed during the implementation. Involving theoretical comparison between a framework design and integration with the HTLC atomic swaps, and one asset transfer test scenario working mechanism analysis.  
+         
+\section{Research Objectives}
+\label{sec:ro}
+\noindent My research has contributed to the universal demanding and requirements on cross-ledger communication towards blockchain areas. In particular, I have focused on the problems that the realization of cross-chain communication is facing.\\
+
+\noindent To understand different patterns or implementations of cross-chain technology, we need to start with the history of cross-chain and grasp the main idea of chain interoperability based on literature review. Based on those findings, we could summarize the fundamental problems the blockchains now facing, according to those difficulties, I will give several examples through the case study in the following chapters.  The analysis and comparison from various aspects will next lead to a standard and universal needs of the cross-chain area. In my thesis, I have considered the following three major elements of this study as shown in Figure \ref{fig:contri}
+
     \begin{figure}[H]
-    \includegraphics[width=1\textwidth]{./figures/contri.png}
+    \includegraphics[width=0.937\textwidth]{./figures/contri.png}
     \centering
-    \caption{Research components of cross-chain communication}%\protect\footnotemark}
+    \caption{Research components of cross-chain intercommunication}%\protect\footnotemark}
     \centering
     \label{fig:contri}
     \end{figure}
 
+
 \section{Delimitations}
+\label{sec:d}
+\noindent Information provided in this thesis work is the result of multiple new kinds of research, some findings and theoretical background are based on publicly available resources of varying quality, involves the posts from the discussion forum. Addressing the cross-chain problem and located in one specific field could lead to an unbalanced view, since cross-chain may evolve into a financial aspect that I do not comprehend. This thesis conclusion does not provide any suggestion for investment.\\
+
+\noindent There are tons of nuance, variations in cross-chain system design and assumptions. Due to the time limit, here we focus on the specific cross-chain transactions performance to analyze. Aside from the projects that are not landing for use, many projects outlined are proposing solutions that in requirement of multiple different blockchain systems, so we are not able to test them out accordingly.
 
 \section{Thesis Organization}
-
+\label{sec:to}
 This thesis is organized into five chapters, as follows:
 
 $\bullet $ Chapter \ref{chap:1} concentrates on the research value and market meaning of this thesis, then briefly introduces the concept of cross-chain communication.
@@ -49,7 +58,7 @@ $\bullet $ Chapter \ref{chap:2} studies the background of the cross-chain projec
 
 $\bullet $ Chapter \ref{chap:3} focuses on the theoretical solutions that will address the difficulties, discusses the communication process of various cross-chain projects based on different group rules. 
 
-$\bullet $ Chapter \ref{chap:4} put efforts in analyzing the market demand situation and discuss the applications that could be adopted, compare the technology development of some representative projects.
+$\bullet $ Chapter \ref{chap:4} put efforts in analyzing the market demand situation, and discuss the applications that could be adopted, compare the technology development of some representative projects.
 
 $\bullet $ Chapter \ref{chap:5} summarizes the findings during the research and suggests several ideas for related future work.
 

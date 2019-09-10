@@ -1,7 +1,7 @@
 \subsection{Relay Scheme}
 \subsubsection{BTC-Relay}
 \noindent In 2016, the BTC-Relay released by the Consensys team is the most classic relay cross-chain solution, enabling cross-chain transactions between Ethereum and Bitcoin, as well as realizing Ethereum's DApp applications to support BTC payments. Since Bitcoin scripts are non-Turing complete and difficult to support complex applications, BTC-Relay only implements one-way cross-chain from Bitcoin to Ethereum.
-        \begin{figure}[H]
+        \begin{figure}[htb!]
         \includegraphics[width=1\textwidth]{./figures/btc.png}
         \centering
         \caption{BTC-Relay cross-chain process diagram}%\protect\footnotemark}
@@ -21,7 +21,7 @@
         \label{fig:cosmos}
         \end{figure}
         
-\noindent There are many Zones connected to the Hub (Hub is a chain, and each Zone is also a chain). Cosmos Hub maintains a multi-asset distributed ledger and masters the asset status of all the Zones that connected to it. Each Zone will synchronize the state of the Hub, but the communication among Zones can only be done indirectly through the Hub. Each cross-chain asset transfer requires a standard successful confirmation from Zones and Hub. 
+\noindent There are many Zones connected to the Hub (Hub is a chain, and each Zone is also a chain). Cosmos Hub maintains a multi-asset distributed ledger and masters the asset status of all the Zones that connected to it. Each Zone will synchronize the state of the Hub, but the communication among Zones can only be done indirectly through the Hub. Each cross-chain asset transfer requires a standard successful confirmation from Zones and Hub. \\
 \noindent The information is transmitted between zones through packets based on the IBC (Inter-Blockchain Communication) protocol. The blocks in a space pack the data to be delivered into standard IBC data packets and finally complete the transmission through the network layer UDP or TCP protocol.
         \begin{figure}[H]
         \includegraphics[width=0.8\textwidth]{./figures/IBC.png}
@@ -52,55 +52,55 @@
 \noindent Cosmos based on \textbf{Tendermint} consensus, which is the combination of PBFT and PoS, it improves the processing power of Cosmos Network. The cross-chain transaction between Cosmos and other heterogeneous blockchains need to be carried out through Cosmos Bridge, Bridge-Zone will be responsible for the docking with the original chain, including the confirmation of the original chain transaction, create or destroy the corresponding tokens.\\
 \noindent Overall, Cosmos is a blockchain development framework, allowing developers to focus on their own business without having to consider the underlying technology of the blockchain so the plug-in design can use Cosmos as needed.
 
-
-\subsubsection{Polkadot}
-\noindent Polkadot\cite{polkadot} is a cross-chain project supported by the Web3 Foundation. Creating a scalable, heterogeneous, multi-chain architecture designed to address blockchain interoperability, scalability, and security.\\
-\noindent The overall architecture of Polkadot is shown in the figure below, consisting of a Relay Chain, Parachains and Bridges. \\
-
-\begin{table}[H]
-\begin{tabular}{l|c}
-
-Role& Description \\
-\hline
-\multirow{3}{1in}{\textbf{Relay chain}}& The central system of the Polkadot network, which \\& coordinates the consensus and transactions between the chains, \\& records account information and transaction status; \\
-\hline
-\multirow{2}{1in}{\textbf{Parachains}}& Built by developers to collect and process transactions,\\&and transfer to Relay chain; \\
-\hline
-\multirow{2}{1in}{\textbf{Bridges}} & Connects other heterogeneous blockchains (such as Ethereum) \\& with Polkadot network.\\
-\hline
-\textbf{Collators} & Collects user transactions and submitting to Validators\\
-\hline
-\multirow{2}{1in}{\textbf{Validators}} &Validates and broadcasts transaction data committed\\ & by Collators, verifys blocks and paying deposits\\
-\hline
-\textbf{Nominators} &Investment deposits selected for trust Validators \\
-\hline
-\textbf{Fishermen} &Supervises the evil behavior in the network\\
-\hline
-\end{tabular}
-\caption{Main roles in Polkadot}
-\end{table}
-
-\noindent Collators and Validators are the performers of the main transaction when doing cross-chain operations, while Nominators and Fishermen are the participants in maintaining system trust.\\
-
-
-\begin{figure}[H]
-    \includegraphics[width=1\textwidth]{./figures/Polkadot.jpg}
-    \centering
-    \caption{Polkadot network architecture \protect\footnotemark}
-    \centering
-\end{figure}
-\footnotetext{Image courtesy of Polkadot white paper\cite{polkadot}}
-
-\noindent Parachain can share trust of the entire Polkadot network, but it also gives a certain confirmation right to the Relay chain; when the user's transaction information on Parachain A is transmitted to Parachain B, the process is as follows:
-\begin{enumerate}
-    \item The initiated transaction is sent to the Collator on Parachain A;
-    \item Collator validates the transaction and packs it into the block; 
-    \item Collator submits the block and state transition proof to the Validator on Parachain A;
-    \item The Validator verifies the block it receives that contains only valid transactions and pays a certain amount of deposit;
-    \item  After enough Nominators have paid a deposit for the Validator, and they broadcast the block to the Relay Chain;
-    \item The transaction of data has been executed.
-\end{enumerate}
-\noindent Unlike Cosmos, Polkadot supports cross-chain interoperability between heterogeneous chains. It does support not only asset transactions but also data transfer. Its system complexity and implementation are more difficult than Cosmos.
+%
+%\subsubsection{Polkadot}
+%\noindent Polkadot\cite{polkadot} is a cross-chain project supported by the Web3 Foundation. Creating a scalable, heterogeneous, multi-chain architecture designed to address blockchain interoperability, scalability, and security.\\
+%\noindent The overall architecture of Polkadot is shown in the figure below, consisting of a Relay Chain, Parachains and Bridges. \\
+%
+%\begin{table}[H]
+%\begin{tabular}{l|c}
+%
+%Role& Description \\
+%\hline
+%\multirow{3}{1in}{\textbf{Relay chain}}& The central system of the Polkadot network, which \\& coordinates the consensus and transactions between the chains, \\& records account information and transaction status; \\
+%\hline
+%\multirow{2}{1in}{\textbf{Parachains}}& Built by developers to collect and process transactions,\\&and transfer to Relay chain; \\
+%\hline
+%\multirow{2}{1in}{\textbf{Bridges}} & Connects other heterogeneous blockchains (such as Ethereum) \\& with Polkadot network.\\
+%\hline
+%\textbf{Collators} & Collects user transactions and submitting to Validators\\
+%\hline
+%\multirow{2}{1in}{\textbf{Validators}} &Validates and broadcasts transaction data committed\\ & by Collators, verifys blocks and paying deposits\\
+%\hline
+%\textbf{Nominators} &Investment deposits selected for trust Validators \\
+%\hline
+%\textbf{Fishermen} &Supervises the evil behavior in the network\\
+%\hline
+%\end{tabular}
+%\caption{Main roles in Polkadot}
+%\end{table}
+%
+%\noindent Collators and Validators are the performers of the main transaction when doing cross-chain operations, while Nominators and Fishermen are the participants in maintaining system trust.\\
+%
+%
+%\begin{figure}[H]
+%    \includegraphics[width=1\textwidth]{./figures/Polkadot.jpg}
+%    \centering
+%    \caption{Polkadot network architecture \protect\footnotemark}
+%    \centering
+%\end{figure}
+%\footnotetext{Image courtesy of Polkadot white paper\cite{polkadot}}
+%
+%\noindent Parachain can share trust of the entire Polkadot network, but it also gives a certain confirmation right to the Relay chain; when the user's transaction information on Parachain A is transmitted to Parachain B, the process is as follows:
+%\begin{enumerate}
+%    \item The initiated transaction is sent to the Collator on Parachain A;
+%    \item Collator validates the transaction and packs it into the block; 
+%    \item Collator submits the block and state transition proof to the Validator on Parachain A;
+%    \item The Validator verifies the block it receives that contains only valid transactions and pays a certain amount of deposit;
+%    \item  After enough Nominators have paid a deposit for the Validator, and they broadcast the block to the Relay Chain;
+%    \item The transaction of data has been executed.
+%\end{enumerate}
+%\noindent Unlike Cosmos, Polkadot supports cross-chain interoperability between heterogeneous chains. It does support not only asset transactions but also data transfer. Its system complexity and implementation are more difficult than Cosmos.
 
 %
 %\subsubsection{Quant Overledger}

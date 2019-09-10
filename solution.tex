@@ -8,23 +8,23 @@
 \noindent For a more intuitive introduction to the atomic swap protocol, we assume an exchange scenario:
 
    \begin{figure}[H]
-    \includegraphics[width=0.79\textwidth]{./figures/atomic_swaps.png}
-	\centering
+    \includegraphics[width=0.8\textwidth]{./figures/atomic_swaps.png}
+    \centering
     \caption{Atomic swaps diagram}%\protect\footnotemark}
     \centering
     \label{fig:atomic}
     \end{figure}
 \begin{enumerate}
-  \item Assume Alice has 1 BTC on chain A while Bob has 20 ETH on chain B, and Alice wants to change Bob's 20 ETH with one BTC. Both Alice and Bob have wallet addresses on both chains A and chain B.
-    \item To initiate this transaction, Alice needs to randomly generate a key K, which is known only to Alice and then initiates a 1 BTC on chain A transaction (transaction \textcircled{1}) to Bob. The transaction can be only finished when obtains the signature of Bob and provides the key K.
+  \item Assume Alice has 1 BTC on Bitcoin while Bob has 20 ETH on Ethereum, and Alice wants to change Bob's 20 ETH with 1 BTC. Both Alice and Bob have wallet addresses on both Bitcoin and Ethereum.
+    \item To initiate this transaction, Alice needs to randomly generate a key K, which is known only to Alice and then initiates a 1 BTC on-Bitcoin transaction (transaction \textcircled{1}) to Bob. The transaction can be only finished when obtains the signature of Bob and provides the key K.
     \item Before broadcast transaction \textcircled{1}, Alice will first broadcast a retracement (transaction \textcircled{2}). If transaction \textcircled{1} does not receive the correct key and signature within 48 hours, the amount paid by that will be returned to Alice. Transaction \textcircled{2} must be signed by Alice and Bob after the broadcast to take effect. At the same time, Alice will only broadcast the transaction \textcircled{1} to the network if transaction \textcircled{2} is successfully validated.
     \item Bob now sees the transaction \textcircled{2} sent by Alice. If Bob agrees, he will sign the transaction \textcircled{2}, of course, Alice will also complete the signature so that the retracement will take effect. Then Alice will broadcast the transaction \textcircled{1} to the whole network.
-    \item Bob can only get the value K after he pays Alice with 20 ETH. Hence Bob initiates transaction \textcircled{3} on chain B to pay Alice 20 ETH. These 20 ETH are only available if Alice enters the decrypted key K and attaches Alice's signature. To prevent Alice from denying, Bob also issues a retracement transaction \textcircled{4} that requires Alice and Bob to sign together before the broadcast transaction \textcircled{3}, when Alice does not provide the correct key or the signature within 24 hours. Then activate the retracement, 20 ETH will be returned to Bob.
+    \item Bob can only get the value K after he pays Alice with 20 ETH. Hence Bob initiates transaction \textcircled{3} on Ethereum to pay Alice 20 ETH. These 20 ETH are only available if Alice enters the decrypted key K and attaches Alice's signature. To prevent Alice from denying, Bob also issues a retracement transaction \textcircled{4} that requires Alice and Bob to sign contract together before the broadcast transaction \textcircled{3}, when Alice does not provide the correct key or the signature within 24 hours. Then activate the retracement, 20 ETH will be returned to Bob.
     \item After Alice sees the transaction \textcircled{4}, both Alice and Bob need to attach their signature to this transaction to take effect. At this time, Bob will broadcast transaction \textcircled{3} to network.
-    \item In order to get 20 ETH, Alice will sign transaction \textcircled{3} with the correct value K. For now, transaction \textcircled{3} succeeds, Alice obtains 20 ETH, and Bob obtains key K.
-    \item After Bob gets the key K, he goes back to chain A, enters the key K and his signature, and finally gets 1 BTC from Alice.
+    \item To get 20 ETH, Alice will sign transaction \textcircled{3} with the correct value K. For now, transaction \textcircled{3} succeeds, Alice obtains 20 ETH, and Bob obtains key K.
+    \item After Bob gets the key K, he goes back to Bitcoin, enters the key K and his signature, and finally gets 1 BTC from Alice.
 \end{enumerate}
-\noindent From the diagram, we could obtain that the atomic swap protocol does not transfer the assets of Chain A to Chain B, but only the assets ownership of both chains. The total assets of Chain A and Chain B have not changed, so it can only achieve asset exchange between chains and cannot achieve asset transfer.\\
+\noindent From the diagram, we could obtain that the atomic swap protocol does not transfer the assets of Bitcoin to Ethereum, but only the assets ownership of both chains. The total assets of Bitcoin and Ethereum have not changed, so it can only achieve asset exchange between chains and cannot achieve asset transfer.\\
 \noindent This solution not only can be applied to the decentralized ledger system but also the centralized ledgers. As long as the two systems provide the functions of retracement, time lock, and key lock.
 
 \subsubsection{Hash Time-Locked Contracts(HTLC)}
@@ -41,7 +41,7 @@
 
 
 \subsubsection{Hash Time-locked Agreements(HTLA)}
-\noindent HTLA is one HTLC generalization protocol came up by Interledger\cite{HTLA}, regardless whether the system support HTLC or not, whether it's a distributed or centralized ledger. HTLA can be used to implement cross-chain exchange between system or even support multi-hop cross-chain interchange between multiple systems, as shown in the Figure \ref{fig:HTLA} below.
+\noindent HTLA is one HTLC generalization protocol came up by Interledger\cite{HTLA}, regardless whether the system support HTLC or not, whether it's a distributed or centralized ledger. HTLA can be used to implement cross-chain exchange between system or even support multi-hop cross-chain interchange between multiple systems, as shown in Figure \ref{fig:HTLA} below.
    \begin{figure}[H]
     \includegraphics[width=0.8\textwidth]{./figures/HTLA.png}
     \centering
@@ -142,6 +142,6 @@
   Once the cross-chain platform established, blockchains can indirectly interconnect with each other. Thus, only four paths are required to build a cross-chain network. However, in this method, the cross-chain platform will become the key point and performance bottleneck of the entire cross-chain network (not necessarily the bottleneck, but it may be in the future). Once the cross-chain platform is attacked, the entire cross-chain network will be paralyzed.
 \end{enumerate}
 \subsubsection{Passive compatibility}
-\noindent Passive compatibility is mainly aimed at the blockchain system that has not been developed. It first builds the underlying cross-chain platform, allowing other blockchain systems to be easily, conveniently and securely accessed. Cross-chain platforms will prioritize the development of systems and protocol standards that apply to interoperability between the various chains. The subsequent development of standards-compliant development on existing platforms allows for the creation of blockchains that naturally have cross-chain functionality within the system. However, the cross-chain mentioned here refers to the chain that conforms to the protocol standard can be easily connected. If it is to interoperate with other chains outside the system, it is necessary to develop a separate middleware to communicate.\\
+\noindent Passive compatibility is mainly aimed at the blockchain system that has not been developed. It first builds the underlying cross-chain platform, allowing other blockchain systems to be easily, conveniently, and securely accessed. Cross-chain platforms will prioritize the development of systems and protocol standards that apply to interoperability between the various chains. The subsequent development of standards-compliant development on existing platforms allows for the creation of blockchains that naturally have cross-chain functionality within the system. However, the cross-chain mentioned here refers to the chain that conforms to the protocol standard can be easily connected. If it is to interoperate with other chains outside the system, it is necessary to develop a separate middleware to communicate.\\
 
 \noindent Besides, different cross-chain platforms can support different types of blockchains, such as Cosmos supporting isomorphic chains and Polkadot supporting heterogeneous chains, both of which are highly scalable, and will be later discussed in Section \ref{sec:ps}.

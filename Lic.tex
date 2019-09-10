@@ -12,17 +12,12 @@
 \usepackage{graphics}
 \usepackage{amssymb}
 \usepackage{amsmath}
-\usepackage{graphicx} 
+\usepackage{graphicx}
+\usepackage{subfig}
 \usepackage{caption}
 \usepackage{rotating}
 \usepackage{longtable,lscape}
 \usepackage{pdfpages}
-\usepackage[colorlinks,
-            linkcolor=black,
-            anchorcolor=blue,
-            citecolor=green,
-            bookmarksopen=true
-            ]{hyperref}
 \usepackage{listings}
 \usepackage{float}
 \usepackage{array}
@@ -30,7 +25,7 @@
 %\usepackage{transparent} 
 %\usepackage{bm} % bold math
 %\usepackage{fmtcount}
-%\usepackage{booktabs}
+\usepackage{booktabs}
 %\usepackage{bookmark}
 \usepackage{filecontents, pgffor}
 \usepackage{supertabular}
@@ -40,6 +35,12 @@
 
 \usepackage{url}
 \usepackage{cite}
+\usepackage[colorlinks,
+            linkcolor=black,
+            anchorcolor=blue,
+            citecolor=green,
+            bookmarksopen=true
+            ]{hyperref}
 %\usepackage[singlelinecheck=off]{caption}
 
 \DeclareGraphicsExtensions{.pdf,.png,.jpg,.eps}
@@ -73,6 +74,9 @@
 \mainmatter
 \setcounter{secnumdepth}{3} % used for content layout
 
+\input{format/solidity-highlighting.tex}
+\input{format/highlight_js.tex}
+\input{format/jsonHighlight}
 \input{Chapter1} % calls the separate document named Chapter1.tex
 \input{Chapter2}
 \input{Chapter3}

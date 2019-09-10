@@ -3,10 +3,6 @@
 \end{huge}
 
 
-\input{format/solidity-highlighting.tex}
-\input{format/highlight_js.tex}
-\input{format/jsonHighlight}
-
 
 \section{\uppercase\expandafter{\romannumeral1}. Atomic swaps based on HTLC}
 
@@ -25,24 +21,61 @@ see line~\ref{line:h1}
 \end{lstinputlisting}
 
 \section{\uppercase\expandafter{\romannumeral2}. Ethereum smart contracts}
+\label{sec:contract}
 
+
+\begin{lstlisting}[language=Solidity, 
+						caption = Create hash timelock contract example]
+pragma solidity ^0.5.0;
+
+contract HashTimelock{
+    event LogHTLCNew(
+        bytes32 indexed contractId,
+        address indexed sender,
+        address indexed receiver,
+        uint amount,
+        bytes32 hashlock,
+        uint timelock
+    );
+	...
+	
+	modifier fundsSent() {
+        require(msg.value > 0, "msg.value must be > 0");
+        _;
+    }
+    modifier futureTimelock(uint _time) {
+        require(_time > now, "timelock time must be in the future");
+        _;
+    }
+    ...
+    
+    function newContract(address payable _receiver, bytes32 _hashlock, uint _timelock)
+        external
+        payable
+        fundsSent
+        futureTimelock(_timelock)
+        returns (bytes32 contractId)
+    {
+        contractId = sha256(
+            abi.encodePacked(
+                msg.sender,
+                _receiver,
+                msg.value,
+                _hashlock,
+                _timelock
+            )
+        );
+
+\end{lstlisting}
 \noindent This contract provides a way to create and keep
-HTLCs for ETH. Detail protocol:
+HTLCs for ETH.\footnotemark[1] Detail protocol:
 
 \begin{enumerate}
 	\item \texttt{newContract(receiver, hashlock, timelock)}- sender calls this to create a new HTLC and gets back a 32 byte contract id
 	\item \texttt{withdraw(contractId, preimage)} - once the receiver knows the preimage of the hashlock hash they can claim the ETH with this function
 	\item \texttt{refund()} - after timelock has expired and if the receiver did not withdraw funds the sender / creator of the HTLC can get their ETH back with this function.
 \end{enumerate}
-  
-
-\begin{lstinputlisting}[language=Solidity, 
-						firstline = 12, 
-						lastline =40, 
-						caption = Hashed Timelock Contracts (HTLCs) on Ethereum]{./codes/HashedTimelock.sol}
-
-\end{lstinputlisting}
-
+\footnotetext[1]{The complete codes can be found at \url{https://github.com/Fy45/BTS-ETH-atomic_swaps/blob/master/contract/HashedTimelock.sol}}
 
 \begin{lstinputlisting}[language=Solidity, 
 						firstline=20, 

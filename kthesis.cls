@@ -170,14 +170,14 @@
   \par\bigskip
   \if@kthesis@blurb
     \if@kthesis@babel
-%      \begin{otherlanguage}{swedish}
+     \begin{otherlanguage}{swedish}
 %        \noindent 
 %        Akademisk avhandling som med tillst\aa nd
 %        av Kungl Tekniska h\"{o}gskolan framl\"{a}gges till
 %        offentlig granskning f\"{o}r avl\"aggande av
 %        \theexamen\space i\thedisputationsdatum\space 
 %        \thedisputationslokal.\par
-%      \end{otherlanguage}
+      \end{otherlanguage}
     \else
       \noindent Aka\-de\-misk av\-hand\-ling som med
       till\-st\aa nd av Kungl Tek\-niska h\"{o}g\-skolan

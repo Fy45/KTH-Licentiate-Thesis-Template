@@ -2,19 +2,11 @@
 \label{sec:side}
 
 
-\subsubsection{Plasma}
+\subsubsection{Ethereum Plasma}
 \noindent As the second-layer expansion framework of Ethereum, Plasma has been proposed by \textsc{Joseph Poon} (founder of Lightning Network) and \textsc{Vitalik Buterin} (founder of Ethereum) in 2017 \cite{poon2017plasma}. The first thing to be clear is that Plasma is essentially a set of frameworks instead of a separate project. It provides an off-chain solution for a variety of different project real projects. \\
 \noindent Layer 2 expansion of blockchains often known as off-chain expansion, similar to lightning network, this kind of expansion scheme does not need to modify the underlying protocol of the blockchain, but by transferring a large amount of frequent calculation work ``off-chain'', and submitting the calculation results to the ``main chain'' guarantee its finality as we discussed previously. Plasma works like blockchains in blockchains, where anyone can create different Plasma on top of the underlying blockchain to support different business needs. \\
 \noindent As an example of sidechain, Plasma is derived from the general concept of symmetric 2-way pegged scheme to realize the transfer solution. The overall process of asset exchange is shown in figure \ref{fig:2way}. 
-        \begin{figure}[H]
-        \includegraphics[width=1\textwidth]{./figures/2way.png}
-        \centering
-        \caption{{2-way pegged sidechain diagram}\protect\footnotemark}
-        \centering
-        \label{fig:2way}
-        
-        \end{figure}
-\footnotetext{SPV to verify that the transaction exists (recognized by other nodes on the blockchain)}
+
 \begin{enumerate}
     \item When chain A wants to transfer the asset to chain B, it first needs to initiate a transfer transaction Tx1 (chain A's locking addr1 $+$ chain B's receiving address addr2), and the asset M1 is locked on the addr1.
     \item After Tx1 transaction is submitted, it is necessary to wait for a \textit{confirmation period} so that there are enough blocks and calculations to ensure that the cross-chain transaction Tx1 is confirmed, reducing the impact of refactoring on cross-chain transactions.
@@ -23,6 +15,15 @@
     \item After unlocking, M2 can be used freely on chain B.
     \item The process of a transaction from chain B to chain A is similar to previous steps.
 \end{enumerate}
+        \begin{figure}[h]
+        \includegraphics[width=1\textwidth]{./figures/2way.png}
+        \centering
+        \caption{{2-way pegged sidechain diagram}\protect\footnotemark}
+        \centering
+        \label{fig:2way}
+        
+        \end{figure}
+\footnotetext{SPV to verify that the transaction exists (recognized by other nodes on the blockchain)}
 \noindent Plasma supports multi-level sidechains and uses MapReduce mode to perform parallel computing, which greatly improves sidechain performance. The block header and hash data of the side chain will be sent to the main chain, and \textit{Proof of Fraud} can be used to ensure the correctness of the sidechain transaction.
 
 

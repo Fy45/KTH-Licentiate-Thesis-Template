@@ -1,6 +1,7 @@
 \subsection{Notary Scheme}
 \label{sec:notary}
 \subsubsection{Ripple Interledger protocol}
+\label{subsec:interledger}
 \noindent Earlier we focused on cross-chain, this project is more focused on cross-ledger, which means that the agreement supports not only decentralized blockchains but also supports various centralized ledgers, which is broader support for cross-chain applications. Ripple ILP\cite{thomas2015protocol} uses the HTLA and Notary scheme to implement this technology.\\
 \noindent Ripple is the first project to propose the use of blockchain technology to achieve cross-ledger exchange of assets, with a focus on resolving cross-border remittances, enabling faster and more economical international remittances via the Ripple network.\\
 \noindent Interledger Protocol(ILP) is compatible with any online ledger systems. Specifically, the ILP will establish a two-way pegged relationship between the trader's account and a Ripple local account, enabling simultaneous changes between the two to ensure transparency in the transaction process. At the same time, for two ledger systems that do not have a direct payment channel, multi-hop indirect cross-ledger transactions can be realized through ILP. \\
@@ -26,34 +27,33 @@
 
 \noindent Wanchain provides the infrastructure for asset cross-chain transfer channels for different blockchain networks, realizing the transfer of assets between Wanchain and original chain. Wanchain3.0 now launches bridges from Bitcoin to the Ethereum network. The transaction reliability verification is completed by multiple Storeman of Wanchain. The following figures~\ref{fig:wan1} and~\ref{fig:wan2} are shown the transfer process between Wanchain and Ethereum.
 
-        \begin{figure}[H]
-        \includegraphics[width=0.96\textwidth]{./figures/ethtowan.png}
-        \centering
-        \caption{{Data transfer process from Ethereum to Wanchain}\protect\footnotemark}
-        \centering
-        \label{fig:wan1}
-        
-        \end{figure}
-\footnotetext{Image courtesy of Wanchain white paper\cite{wanchain.org}}
-        \begin{figure}[H]
-        \includegraphics[width=1\textwidth]{./figures/wantoeth.png}
-        \centering
-        \caption{{Data transfer process from Wanchain to Ethereum}\protect\footnotemark}
-        \centering
-        \label{fig:wan2}
-        
-        \end{figure}
-\footnotetext{Image courtesy of Wanchain white paper\cite{wanchain.org}}
+%        \begin{figure}[H]
+%        \includegraphics[width=0.96\textwidth]{./figures/ethtowan.png}
+%        \centering
+%        \caption{{Data transfer process from Ethereum to Wanchain}\protect\footnotemark}
+%        \centering
+%        \label{fig:wan1}
+%        
+%        \end{figure}
+%\footnotetext{Image courtesy of Wanchain white paper\cite{wanchain.org}}
+%        \begin{figure}[H]
+%        \includegraphics[width=1\textwidth]{./figures/wantoeth.png}
+%        \centering
+%        \caption{{Data transfer process from Wanchain to Ethereum}\protect\footnotemark}
+%        \centering
+%        \label{fig:wan2}
+%        
+%        \end{figure}
+%\footnotetext{Image courtesy of Wanchain white paper\cite{wanchain.org}}
 
-\begin{enumerate}
+\begin{itemize}
+
     \item The token of the user in the original chain will be sent to Wanchain in the locked account, and Hash Time Lock locks the transaction;
     \item After the \textbf{Voucher} verified  the transaction on the original chain, the \textbf{Storeman} will initiate a cross-chain contract transaction on the Wanchain, and transfer the mapping token in Wanchain to the user's cross-chain account on Wanchain, and locked;
     \item After the user's wallet detects the transaction locked by the cross-chain contract, release the Secret to the cross-chain contract;
     \item Storeman obtains the control of the original chain token through the secret number, thus achieving confirmation of the original chain transaction.
     \item If the user does not release the secret number within the scope of the hash time lock, the hash time lock expires
     \item The transaction of the post-cross-contract is automatically invalidated, and the user regains control of the original token.
-\end{enumerate}
-
+\end{itemize}
 \noindent In Wanchain, when Storeman locked an account, the private key of the locked account is scattered into multiple pieces and send to Storeman, and it requires more than a certain percentage of Storeman complete the signature before the final confirmation. To avoid conspiracy, Storeman has to pay a certain amount of token to participate in the verification in case of doing evil. To ensure atomicity, Wanchain uses a hash time lock to lock cross-chain transactions, ensuring that no user or Storeman will complete a one-sided transaction.\\
-
-\noindent Since the Wanchain mechanism does not change the original chain. It is necessary to adapt the development according to the characteristics of the original chain, which is also the difficulty of heterogeneous cross-chain solution. The transaction speed is affected by the confirmation speed of the original chain.\\\\
+\noindent Since the Wanchain mechanism does not change the original chain. It is necessary to adapt the development according to the characteristics of the original chain, which is also the difficulty of heterogeneous cross-chain solution. The transaction speed is affected by the confirmation speed of the original chain.\\

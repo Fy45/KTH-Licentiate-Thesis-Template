@@ -1,5 +1,6 @@
 \chapter{Project Classification} 
 \label{chap:3}
+\noindent Chapter~\ref{chap:3} presents the corresponding solutions based on the difficulties mentioned in Chapter~\ref{chap:2}. Followed by the case study of eight well-known cross-chain projects in cross-chain industry in Section~\ref{sec:ps}. By illustrating the working theory and new terms that introduced,  we will be familiar with the scheme categories defined by Section~\ref{sec:sol}.
 \input{solution.tex}
 
 \section{Project study}
@@ -75,16 +76,15 @@
     \item \textbf{Mediator}\\
     Mediator in PalletOne is responsible for the overall security of the whole PalletOne network, so Mediator needs to ensure that all decisions are correct. It is similar to the function of miners in traditional blockchains to create blocks. The nodes elect Mediator by using DPoS consensus. Most of the work in PalletOne only needs to be done by the Jury without calling Mediator, in case that Mediator is causing bottleneck performance.
 \end{itemize}
-\noindent The following Figures~\ref{fig:jury} and \ref{fig:mediator} provided by the official yellow paper are the vivid examples of the cross-chain process between BTC and ETH with different endorsement.
+\noindent The following Figures~\ref{fig:jury} and~\ref{fig:mediator} provided by the official yellow paper are the vivid examples of the cross-chain process between BTC and ETH with different endorsement.
 
 \begin{figure}[H]
     \includegraphics[width=1\textwidth]{./figures/jury.png}
     \centering
-    \caption{The normal process of executing the exchange contract (with Jury endorsement) \protect\footnotemark}
+    \caption{The normal process of executing the exchange contract (with Jury endorsement)}
     \label{fig:jury}
     \centering
 \end{figure}
-\footnotetext{Image courtesy of PalletOne yellow paper\cite{palletone}}
 \begin{enumerate}
     \item Jury members and two user accounts first executed the proper contract that generated 7/12 multi-signature address for both crypto-currency.
     \item Then both parties transferred a certain amount of exchange currency to corresponding multi-signature address.
@@ -96,11 +96,10 @@
 \begin{figure}[H]
     \includegraphics[width=1\textwidth]{./figures/mediator.png}
     \centering
-    \caption{The normal process of executing the exchange contract (with Mediator endorsement) \protect\footnotemark}
+    \caption{The normal process of executing the exchange contract (with Mediator endorsement) }
     \label{fig:mediator}
     \centering
 \end{figure}
-\footnotetext{Image courtesy of PalletOne yellow paper\cite{palletone}}
 \noindent The process of Mediator endorsement during the preparation stage differs from the previous one is, the signed contract will inquire the current votes of the Mediator and select the first ten nodes to form the 7/12 multi-signature address. Also, since the limited number of juror in the Jury endorsement, Mediator mode guarantees the persistence of a multi-signature wallet, so there is additional step for the Jury that has already reached the consensus to send the execution results to Mediators to verify, then the jury leader can broadcast the result once received the majority of Mediators' signature.
 
 \noindent Among the projects I have studied so far, PalletOne has the most ambitious and powerful team with a purely technical project that does not have much community operation.
