@@ -7,17 +7,17 @@
 \section{\uppercase\expandafter{\romannumeral1}. Atomic swaps based on HTLC}
 
 \begin{lstinputlisting}[language=JavaScript,  
-						caption=Bitshares side, 	
-						firstline = 10, 
-						lastline = 50,
+						caption=Bitshares deploy the HTLC, 	
+						firstline = 36, 
+						lastline = 94,
 						escapechar=@]{./codes/bts.js}
 \end{lstinputlisting}
-see line~\ref{line:h1}
+
 
 \begin{lstinputlisting}[language=JavaScript, 
-						caption=Ethereum Side, 
-						firstline=20,
-						lastline=50]{./codes/eth.js}	
+						caption=Ethereum refund after expiration, 
+						firstline=198,
+						lastline=260]{./codes/eth.js}	
 \end{lstinputlisting}
 
 \section{\uppercase\expandafter{\romannumeral2}. Ethereum smart contracts}
@@ -76,11 +76,12 @@ HTLCs for ETH.\footnotemark[1] Detail protocol:
 	\item \texttt{refund()} - after timelock has expired and if the receiver did not withdraw funds the sender / creator of the HTLC can get their ETH back with this function.
 \end{enumerate}
 \footnotetext[1]{The complete codes can be found at \url{https://github.com/Fy45/BTS-ETH-atomic_swaps/blob/master/contract/HashedTimelock.sol}}
+\hfill
 
 \begin{lstinputlisting}[language=Solidity, 
-						firstline=20, 
-						lastline=50, 
-						caption= Ethereum micro-payment channel -- Machinomy]{./codes/contract.sol}
+						firstline=11, 
+						lastline=68, 
+						caption= Ethereum micro-payment channel structure -- Machinomy]{./codes/contract.sol}
 	
 \end{lstinputlisting}
 
