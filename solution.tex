@@ -4,7 +4,7 @@
 \subsection{Ensure the atomic of transactions}
 
 \subsubsection{Atomic swaps}
-\noindent An atomic cross-chain swap\cite{herlihy2018atomic} is the basic theoretical framework for multiple parties exchange assets across multiple blockchains. Atomic operations in computer science ensure every exchange either success or failure, no third intermediate state.\\
+\noindent An atomic cross-chain swap\cite{herlihy2018atomic} is the basic theoretical framework for multiple parties exchanging assets across multiple blockchains. Atomic operations in computer science ensure every exchange either success or failure, no third intermediate state.\\
 \noindent For a more intuitive introduction to the atomic swap protocol, we assume an exchange scenario shown in Figure~\ref{fig:atomic}:
 
    \begin{figure}[htb!]
@@ -15,16 +15,16 @@
     \label{fig:atomic}
     \end{figure}
 \begin{enumerate}
-  \item Assume Alice has 1 BTC on Bitcoin while Bob has 20 ETH on Ethereum. Alice wants to change Bob's 20 ETH with 1 BTC. Both Alice and Bob have wallet addresses on both Bitcoin and Ethereum.
+  \item Assume Alice has 1 BTC on Bitcoin while Bob has 20 ETH on Ethereum. Alice wants to exchange Bob's 20 ETH for 1 BTC. Both Alice and Bob have wallet addresses on both Bitcoin and Ethereum.
     \item To start this transaction, Alice needs to randomly generate a key $K$, which is known only to Alice. Then she initiates a 1 BTC on-chain transaction (transaction \textcircled{1}) to Bob. The transaction can only be finished when Alice obtains the signature of Bob and provides the key $K$.
-    \item Before broadcast transaction \textcircled{1}, Alice will first broadcast a retracement (transaction \textcircled{2}). If transaction \textcircled{1} does not receive the correct key or signature within 48 hours, the amount paid by that transaction will be returned to Alice. Transaction \textcircled{2} must be signed by Alice and Bob after broadcast to take effect. At the same time, Alice will only broadcast the transaction \textcircled{1} to the network if transaction \textcircled{2} is successfully validated.
+    \item Before broadcast transaction \textcircled{1}, Alice will first broadcast a retracement (transaction \textcircled{2}). If transaction \textcircled{1} does not receive the correct key or signature within 48 hours, the amount paid by that transaction will be returned to Alice. Transaction \textcircled{2} must be signed by Alice and Bob after broadcasted to take effect. At the same time, Alice will only broadcast the transaction \textcircled{1} to the network if transaction \textcircled{2} is successfully validated.
     \item Bob now sees the transaction \textcircled{2} sent by Alice. If Bob agrees, he will sign the transaction \textcircled{2}, of course, Alice will also complete the signature so that the retracement will take effect. Then Alice will broadcast the transaction \textcircled{1} to the whole network.
     \item Bob can only get the value $K$ after he pays Alice with 20 ETH. Hence Bob initiates transaction \textcircled{3} on Ethereum to pay Alice 20 ETH. These 20 ETH are only available if Alice enters the decrypted key $K$ and attaches Alice's signature. To prevent Alice from denying, Bob also issues a retracement transaction \textcircled{4} that requires Alice and Bob to sign contract together before networks broadcast transaction \textcircled{3}, when Alice does not provide the correct key or the signature within 24 hours. Then activate the retracement, 20 ETH will be returned to Bob.
     \item After Alice sees the transaction \textcircled{4}, both Alice and Bob need to attach their signature to this transaction to take effect. At this time, Bob will broadcast transaction \textcircled{3} to network.
     \item To get 20 ETH, Alice will sign transaction \textcircled{3} with the correct value $K$. For now, transaction \textcircled{3} succeeds, Alice obtains 20 ETH, and Bob obtains key $K$.
     \item After Bob gets the key $K$, he goes back to Bitcoin, enters the key $K $and his signature, and finally gets 1 BTC from Alice.
 \end{enumerate}
-\noindent From the diagram, we could obtain that the atomic swap protocol does not transfer the assets of Bitcoin to Ethereum, but only the assets ownership of both chains. The total assets of Bitcoin and Ethereum have not changed, so it can only achieve asset exchange between chains and cannot achieve asset transfer.\\
+\noindent From the diagram, it should be noticed that the atomic swap protocol does not transfer the assets of Bitcoin to Ethereum, but only the assets ownership of both chains. The total assets of Bitcoin and Ethereum have not changed, so it can only achieve asset exchange between chains and cannot achieve asset transfer.\\
 
 \noindent This solution not only can be applied to the decentralized ledger system but also the centralized ledgers. As long as the two systems provide the functions of retracement, time lock, and key lock.
 
@@ -38,7 +38,7 @@
         \centering
         \label{fig:hash}
         \end{figure}
-\noindent Using only hash time locks is not enough when you want to achieve cross-chain asset transfer, you also need to cooperate with other cross-chain technologies to ensure the authenticity of cross-chain transactions.
+\noindent Using only hash time locks is not enough when you want to achieve cross-chain asset transfer. You also need to cooperate with other cross-chain technologies to ensure the authenticity of cross-chain transactions.
 
 
 %\subsubsection{Hash Time-locked Agreements(HTLA)}
@@ -58,9 +58,9 @@
 \subsection{Complete the transaction confirmation}
 \noindent As we all know, blockchain systems are relatively independent and closed, there is no direct communication way for them to confirm every piece of records that happened. So no matter how it evolves, there will always be a "middle-man" between the two chains, taking on the role of information exchange between the two chains.\\
 
-\noindent Here the "middle-man" represents any entity that could interact with two chains, it may be one or a group, the centralized or distributed agency, a separate chain or even a functional module. The "middle-man" usually acts as a node for two blockchains at the same time, so that the requirement can only be one application software deployed on the same node to obtain the others' system data.\\
+\noindent Here the "middle-man" represents any entity that could interact with two chains, it may be a one or a group, the centralized or distributed agency, a separate chain or even a functional module. The "middle-man" usually acts as a node for two blockchains at the same time, so that the requirement can only be one application software deployed on the same node to obtain the others' system data.\\
 
-\noindent After the "middle-man" completes the data collection, how to confirm the transaction, which transaction to confirm, and who confirms becomes the key point of this problem. According to different schemes, this process can be summarized in three ways:
+\noindent After the "middle-man" completes the data collection, how to confirm the transaction, which transaction to confirm, and who confirms become the key points of this problem. According to different schemes, this process can be summarized in three ways:
 
 \begin{itemize}
     \item \textbf{Notary~\cite{buterin2016chain}}:\\
@@ -110,7 +110,7 @@
     
     
     \item \textbf{Sidechains}:\\
-     The concept of a sidechain as defined in white paper~\cite{back2014enabling} is: \textit{sidechain is a blockchain that validates data from other blockchains}. However, this explanation was considered to be too broad and not rigorous by Vitalik Buterin in Chain Interoperability~\cite{buterin2016chain}. "Sidechain" is more frequently used to refer to what Blockstream calls a "pegged sidechain", where the functionality of a blockchain is of an anchored asset of another asset, which blockchain is regarded as the parent chain. In this way, this relationship is based on assets, not the blockchain itself. Pegged sidechain is a strong coupling cross-chain structure using directly embeds part of the data of the original chain into its own block or storage space. In the case of cross-chain transactions,  verification can be completed directly through the original blockchain data stored in the system. This method is generally considered bidirectionally at the beginning of the system design.\\
+     The concept of a sidechain as defined in white paper~\cite{back2014enabling} is: \textit{sidechain is a blockchain that validates data from other blockchains}. However, this explanation was considered to be too broad and not rigorous by Vitalik Buterin in Chain Interoperability~\cite{buterin2016chain}. "Sidechain" is more frequently  refered to what Blockstream calls a "pegged sidechain". Pegged chain has the function of anchor the child assets to the parent chain. In this way, this relationship is based on assets, not the blockchain itself. Pegged sidechain is a strong coupling cross-chain structure using directly embeds part of the data of the original chain into its own block or storage space. In the case of cross-chain transactions,  verification can be completed directly through the original blockchain data stored in the system. This method is generally considered bidirectionally at the beginning of the system design.\\
      
      Compared to notary and relay, the sidechain is more direct. The state of one chain will be directly reflected in the data of the other chain. When one chain is attacked, the other chain may also be affected. This model is more suitable for the design of same systems, which allows the two sides to become a whole part without losing the relative independence of the ledgers.
 
@@ -119,7 +119,7 @@
 %\noindent The independent computer network connects with each other into a local area network, the local area network develops into a metropolitan area network, the metropolitan area network evolves into the Internet, and the Internet connects the people of the world like never before.\\
 
 \noindent Unlike the evolution of computer network, it is still in the "single-machine" era for the emerging technology of blockchain, and the interactions demand between chains will become increasingly strong with the application of blockchain.\\
-\noindent To realize interoperability among multiple chains, there are two potential aspects of difficulties that need to overcome: 
+\noindent To realize interoperability among multiple chains, there are two potential aspects of difficulties that need to be overcome: 
 \begin{itemize}
     \item How to achieve interoperability among blockchains system that has already developed.
     \item How to prepare and setup the way for the interconnections among the new blockchains in the future.
@@ -153,6 +153,6 @@
 \subsubsection{Passive compatibility}
 \noindent Passive compatibility is mainly aimed at the blockchain system that has not been developed. It first builds the underlying cross-chain platform, allowing other blockchain systems to be easily, conveniently, and securely accessed.\\
 
-\noindent Cross-chain platforms will prioritize the development of systems and protocol standards that apply to interoperability between the various chains. The subsequent development of standards-compliant development on existing platforms allows for the creation of blockchains that naturally have cross-chain functionality within the system. However, the cross-chain mentioned here refers to the chain that conforms to the protocol standard can be easily connected. If it is to interoperate with other chains outside the system, it is necessary to develop a separate middleware to communicate.\\
+\noindent Cross-chain platforms will prioritize the development of systems and protocol standards that apply to interoperability between the various chains. The subsequent development of standards-compliant development on existing platforms allows for the creation of blockchains that naturally have cross-chain functionality within the system. However, the cross-chain mentioned here refers to the chain that conforms to the protocol standard, which can be easily connected. If it is to interoperate with other chains outside the system, it is necessary to develop a separate middleware to communicate.\\
 
 \noindent Besides, different cross-chain platforms can support different types of blockchains, such as Cosmos supporting isomorphic chains and Polkadot supporting heterogeneous chains, both of which are highly scalable.

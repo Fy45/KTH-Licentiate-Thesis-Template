@@ -1,14 +1,14 @@
 \chapter{Implementation and analysis} 
 \label{chap:4}
-\noindent In the previous chapter, we mainly identified several subsets of cross-ledger communication schemes and explained the related projects in details. Nevertheless, clear logic levels do not necessarily ensure a good user experience or functional applications. Thus, to evaluate the performance of different protocols or platforms, it is necessary to design and implement appropriate approaches. \\
+\noindent In the previous chapter, I mainly identified several subsets of cross-ledger communication schemes and explained the related projects in details. Nevertheless, clear logic levels do not necessarily ensure a good user experience or functional applications. Thus, to evaluate the performance of different protocols or platforms, it is necessary to design and implement appropriate approaches. \\
 
-\noindent Section~\ref{sec:env} introduces the implementation background regarding target blockchain description, test-net setup, and related features. Once we get familiar with the environment, section~\ref{sec:imp} describes the implementation details and working diagram for cross-chain swaps, and some use cases are also mentioned. Then we choose Interledger protocol based application to evaluate the performance for cross-chain transfers, with the working details illustrated in section~\ref{sec:switch}. Section~\ref{sec:sum4} summarizes the results. 
+\noindent Section~\ref{sec:env} introduces the implementation background regarding target blockchain description, test-net setup, and related features. Once we get familiar with the environment, section~\ref{sec:imp} describes the implementation details and working diagram for cross-chain swaps, and some use cases are also mentioned. Then we choose Interledger protocol based application to evaluate the performance for cross-chain transfers, with the working details illustrated in section~\ref{sec:switch}. Section~\ref{sec:market} discusses some possible prospects for development based on 20 different projects I have studied so far. Section~\ref{sec:sum4} summarizes the results. 
 
 \section{Environment Setup}
 \label{sec:env}
-\noindent Evaluating all the investigated solutions at this period is unrealistic, for the limited number of blockchains that supported by various platforms, incomplete blockchain plugins designed by protocols, even some of the projects have not implemented for test use so far. Accordingly, at this early stage of cross-chain techniques, the plan is first to implement a basic functional cross-chain swap program, then choose one developed application for source code study. Followed by an analysis of these two solutions from several chosen aspects, such as the complexity of realizing the transaction, safety issues, and future application scenarios.\\
+\noindent Evaluating all the investigated solutions at this period is unrealistic, because of the limited number of blockchains that supported by various platforms, incomplete blockchain plugins designed by protocols, even some of the projects have not implemented for test use so far. Accordingly, at this early stage of cross-chain techniques, the plan is first to implement a basic functional cross-chain swap program, then choose one developed application for source code study. Followed by an analysis of these two solutions from several chosen aspects, such as the complexity of realizing the transaction, safety issues, and future application scenarios.\\
 \subsection{Blockchains}
-\noindent In these experiments, we aimed at utilizing different cross-chain solutions on two trade parties, which requires the user account setup on those blockchain test-nets. Out of consideration of ensuring the integrity and feasibility of the implementation, we choose Ethereum as the main object blockchain to perform the test.\\
+\noindent In these experiments, I aimed at utilizing different cross-chain solutions on two trade parties, which requires the user account setup on those blockchain test-nets. Out of consideration of ensuring the integrity and feasibility of the implementation, I choose Ethereum as the main object blockchain to perform the test.\\
 
 \begin{large}
 \noindent \textbf{A. Ethereum}
@@ -31,9 +31,9 @@
 \begin{large}
 \noindent \textbf{C. Ripple XRP ledger}
 \end{large}\\
-\noindent Ripple is the world's first open payment network, a peer-to-peer global payment network based on block connectivity. XRP ledger~\cite{xrpledger} presented by Ripple serves as an open-source distributed ledger for real-time financial transactions. As the home of base currency XRP in the Ripple network, it has introduced a unique consensus mechanism RPCA. RPCA~\cite{chase2018analysis} combines the problems of Byzantine generals to get rid of the restriction of consensus through mining and validates and confirm transactions in a short time by voting special nodes.\\
+\noindent Ripple is the world's first open payment network, a peer-to-peer global payment network based on block connectivity. XRP ledger~\cite{xrpledger} presented by Ripple serves as an open-source distributed ledger for real-time financial transactions. As the home of base currency XRP in the Ripple network, it has introduced a unique consensus mechanism RPCA. RPCA~\cite{chase2018analysis} combines the problems of Byzantine generals to get rid of the restriction of consensus through mining and validates and confirm transactions in a short time by voting special nodes. XRP ledger is easy to integrate with ILP protocol for further development.\\
 
-\noindent As another product created by Ripple, XRP ledger is much easier to integrate with Interledger protocol, together will they enable money network interoperability.\\
+
 
 \begin{table}[H]
 \caption{Feature summary of chosen blockchains}
@@ -139,9 +139,10 @@ Token                                                                  & ETH    
 
 \subsection{Work flow}
 \noindent Switch is one wallet application that implements the function of assets swaps by making a payment to yourself through a connector. As indicated in RFC~\cite{paymentchannel}, a user could minimize the counterparty risk by using the payment channel and meager in-flight amounts.\\
-\noindent The simple workflow is shown in Figure~\ref{fig:flow}. To initiate the asset exchange, user needs to make the deposit to the Interledger wallet from each decentralized ledger first, and start streaming payment, the maximum of M and N is controlled by STREAM protocol, m and n are calculated by the exchange rate connector provided. At the same time, two payment channels are created on each ledger between the kava-lab connector and user account. It should be noticed that the total deposit amount should limit the total exchange amount.
 
-\begin{figure}[H]
+\noindent The simple workflow is shown in Figure~\ref{fig:flow}. To initiate the asset exchange, user needs to make the deposit to the Interledger wallet from each decentralized ledger first, and start streaming payment, the maximum of M and N is controlled by STREAM protocol, m and n are calculated by the exchange rate connector provided. At the same time, two payment channels are created on each ledger between the kava-lab connector and user account. It should be noticed that the total deposit amount should limit the total exchange amount.\\
+
+\begin{figure}[htb!]
     \includegraphics[width=1\textwidth]{./figures/interledgerWallet}
         \centering
         \caption{Exchange Sequence diagram}
@@ -149,6 +150,7 @@ Token                                                                  & ETH    
         \label{fig:flow}
 
 \end{figure}
+
 \noindent Take Ethereum for example, Figure~\ref{fig:dia} illustrates the sequence diagram of how payment channel works.
 \begin{enumerate}
     \item After create the payment, the Ethereum account will trigger a micropayment channel through the Machinomy contract\footnotemark[1] with a payment of $X$ ETH for transaction from user account to online-peer, the online-peer defined by connector will also create a channel with $Z$ ETH to user account, the amount $Z$ is a fixed number also defined by connector. The contract will notify both sides with the channel id for interaction.
@@ -171,6 +173,41 @@ Token                                                                  & ETH    
     \label{fig:dia}
 \end{figure}
 
+
+\section{Market Analysis}
+\label{sec:market}
+\noindent The development of cross-chain network plays a vital role in the future blockchain industry, mainly due to the huge imagination space of its application scenarios, this section lists only some of the typical types.\\
+
+
+
+\begin{longtable}{l|p{7cm}}
+ \caption{\label{tab:app}Market Analysis}\\
+ \toprule
+\textbf{Categories} &\textbf{Analysis}\\
+\midrule\endfirsthead
+\multicolumn{2}{r}{Continued from Table 4.2}\\\hline 
+\textbf{Categories} &\textbf{Analysis}\\
+\midrule\endhead
+\multicolumn{2}{r}{Continued on next page}\\
+\endfoot
+\multicolumn{2}{c}{}\\\endlastfoot
+Underlying platform expansion & At present, the performance of the underlying platform of blockchain has become one of the bottlenecks restricting the development of blockchain application, and there are many schemes for expansion, side-chain becomes one of the important ones. By transferring massive transaction processing and computing overhead of the main chain to the side chain, this technology managed to maintain both side chain and main chain as one whole system. This type of pattern has been adopted by many projects, such as Aelf, Plasma, etc.\\
+\midrule
+Payment & The cross-chain applications are more committed to solving the problem of cross-ledger payment settlement. For example, Ripple and Zipper primarily address the cross-border remittance of centralized ledgers, and BTC-Relay addresses cross-chain payments with Ethereum and The Bitcoin network.\\
+\midrule
+Decentralized Exchange & One of the characteristics of the blockchain is that it is distributed and decentralized. While due to the previous technical limitations, the exchanges which link the distributed ledgers and traditional ones can only be implemented in a centralized manner for the time being. Cross-chain technology offers the possibility of decentralized exchanges.\\
+\midrule
+Multi-ledger wallets & Blockchain wallet is one of the main application in the blockchain world, and the current wallet is mainly limited to store digital assets, not for any trade purpose. The implementation of cross-chain modules in blockchain application making the wallet has the ability to trade across currencies.\\
+\midrule
+Oracles & The current blockchain can only obtain information inside and know nothing about events, status and other information on other chains. Cross-chain technology enables the interaction of information between different chains, and the smart contract of chain A can be triggered and executed by the state of chain B, thus enabling the function of the cross-chain oracles. Chains are no longer completely separated, a blockchain network that can influence and interact with each other will be formed, prompting more valuable blockchain applications.\\
+\midrule
+On-chain transactions & In the future, more and more physical assets will be mapped to the blockchain, becoming digital assets, and cross-chain technology can allow such digital assets in different chains to transfer and mortgage. This technology will greatly improve the security, traceability, and convenience of asset transactions.\\
+\bottomrule
+
+
+\end{longtable}
+
+
 \section{Summary}
 \label{sec:sum4}
-\noindent This chapter mainly introduces two implementations of different methods to accomplish the cross-chain transaction. First, we give a brief introduction of the applied ledger features and test environment settings. Then, we implement a simple HTLC atomic swaps framework from Bitshares to Ethereum, present one trade case result. Finally, we studied and tested one developed application integrated with interledger, dig into the working mechanism, and shows the result.
+\noindent This chapter mainly introduces two implementations of different methods to accomplish the cross-chain transaction and followed by a short analysis of the future market usage discussion. In the implementation, first I gave a brief introduction of the applied ledger features and test environment settings. Then, one HTLC atomic swaps framework from Bitshares to Ethereum was implemented, presented with one trade case result. Finally, I studied and tested one developed application integrated with interledger, dig into the working mechanism, and showed the result. In market analysis, I listed 6 different directions of cross-chain development and gave a short analysis of each of them.
